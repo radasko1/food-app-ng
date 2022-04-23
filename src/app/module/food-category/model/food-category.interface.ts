@@ -12,7 +12,7 @@ export interface FoodCategory {
   name: string;
   /**
    * Image path for the category
-   * Available from two option, image souce URL or Base64 hash
+   * Available from two option, image source URL or Base64 hash
    */
   imageSource?: string;
   /**
