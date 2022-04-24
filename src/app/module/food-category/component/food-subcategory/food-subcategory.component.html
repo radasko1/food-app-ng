@@ -1,13 +1,18 @@
 <div class="container">
-  <app-return-back urlPath="/category" buttonText="Zpět na seznam kategorií"></app-return-back>
-  <h2>{{ (category | async)?.name }}</h2>
+  <app-return-back
+    urlPath="/category"
+    buttonText="Zpět na seznam kategorií"
+  ></app-return-back>
+
+  <app-header-panel
+    [title]="(category | async)?.name || null"
+  ></app-header-panel>
+
   <div class="row">
     <div *ngFor="let subcategory of (category | async)?.children" class="col-2">
-      <a href="/category/{{ subcategory.id }}">
-        <p-card class="pointer">
-          <strong>{{ subcategory.name }}</strong>
-        </p-card>
-      </a>
+      <p-card [routerLink]="['/category', subcategory.id]" class="pointer">
+        <strong>{{ subcategory.name }}</strong>
+      </p-card>
     </div>
   </div>
 </div>

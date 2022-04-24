@@ -1,12 +1,14 @@
 <div class="container">
-  <h2>Dostupné kategorie</h2>
+  <app-header-panel
+    title="Dostupné kategorie"
+    [showRecordButton]="false"
+  ></app-header-panel>
+
   <div class="row">
     <div *ngFor="let category of categoryList | async" class="col-2">
-      <a href="/category/{{ category.id }}">
-        <p-card class="pointer">
-          <strong>{{ category.name }}</strong>
-        </p-card>
-      </a>
+      <p-card [routerLink]="['/category', category.id]" class="pointer">
+        <strong>{{ category.name }}</strong>
+      </p-card>
     </div>
   </div>
 </div>

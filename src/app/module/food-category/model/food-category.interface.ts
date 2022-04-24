@@ -11,10 +11,9 @@ export interface FoodCategory {
    */
   name: string;
   /**
-   * Image path for the category
-   * Available from two option, image source URL or Base64 hash
+   * CSS class for category icon
    */
-  imageSource?: string;
+  iconClass?: string;
   /**
    * Subcategories, if there are any
    */

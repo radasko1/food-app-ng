@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Nový záznam</h2>
+
+  <form [formGroup]="recordForm">
+    <!--  Name  -->
+    <div class="field mb-3">
+      <label for="recordName" class="d-block mb-1">Název</label>
+      <input
+        pInputText
+        id="recordName"
+        type="text"
+        class="p-inputtext-sm"
+        formControlName="name"
+      />
+    </div>
+    <!--    Price -->
+    <div class="field mb-3">
+      <label for="recordPrice" class="d-block mb-1">Cena</label>
+      <p-inputNumber
+        id="recordPrice"
+        formControlName="price"
+        mode="currency"
+        currency="CZK"
+        locale="cs-CZ"
+      ></p-inputNumber>
+    </div>
+  </form>
+</div>

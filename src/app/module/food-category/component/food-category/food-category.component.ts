@@ -10,6 +10,7 @@ import { MockCategoryService } from '../../service/mock-category.service';
 @Component({
   selector: 'app-food-category',
   templateUrl: './food-category.component.html',
+  styleUrls: ['./food-category.component.scss'],
 })
 export class FoodCategoryComponent implements OnInit {
   categoryList: Observable<FoodCategory[]> = of([]);

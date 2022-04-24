@@ -1,0 +1,29 @@
+<div *ngIf="title" class="d-flex justify-content-between align-items-center">
+  <h2>{{ title }}</h2>
+
+  <div class="button-group">
+    <button
+      [routerLink]="['/category/new-category']"
+      *ngIf="showSubcategoryButton"
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-plus"
+      iconPos="left"
+      class="p-button-sm no-decoration"
+      label="Přidat kategorii"
+    ></button>
+    <button
+      [routerLink]="['/category/new-record']"
+      *ngIf="showRecordButton"
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-plus"
+      iconPos="left"
+      class="p-button-sm no-decoration"
+      [class.ms-2]="showSubcategoryButton"
+      label="Přidat záznam"
+    ></button>
+  </div>
+</div>

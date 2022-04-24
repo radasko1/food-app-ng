@@ -1,4 +1,4 @@
-import { Attribute, Component, Input } from '@angular/core';
+import { Attribute, Component } from '@angular/core';
 
 @Component({
   selector: 'app-return-back',

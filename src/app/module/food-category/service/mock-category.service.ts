@@ -5,7 +5,7 @@ import { FoodCategory } from '../model/food-category.interface';
 
 @Injectable()
 export class MockCategoryService {
-  private _categoryList: FoodCategory[] = foodCategoryServerResponse;
+  private readonly _categoryList: FoodCategory[] = foodCategoryServerResponse;
 
   /**
    * Get statically created list of food categories.
@@ -14,10 +14,7 @@ export class MockCategoryService {
    */
   // TODO: change to request from real server
   get categoryList(): Observable<FoodCategory[]> {
-    // create new array without subcategories
-    const topLevelCategories = this._categoryList.map(c => (Object.assign(c, {children: []})));
-
-    return of(topLevelCategories);
+    return of(this._categoryList);
   }
 
   /**
@@ -28,7 +25,7 @@ export class MockCategoryService {
   // TODO: change to request from real server
   get category(): Observable<FoodCategory> {
     // create new flatten array only with subcategories
-    const subcategories = this._categoryList.filter(c => {
+    const subcategories = this._categoryList.filter((c) => {
       return !!(c.children && c.children.length > 0);
     });
 

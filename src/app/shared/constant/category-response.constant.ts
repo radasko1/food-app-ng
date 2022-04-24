@@ -10,6 +10,7 @@ export const foodCategoryServerResponse: FoodCategory[] = [
   {
     id: 'faer-8846',
     name: 'Ovoce',
+    iconClass: 'ico-fruit',
     children: [
       { id: 'rfpd-3658', name: 'Jablko' },
       { id: 'okfw-6652', name: 'Hrozno' },
@@ -17,15 +18,16 @@ export const foodCategoryServerResponse: FoodCategory[] = [
       { id: 'cehf-0584', name: 'Mandarinka' },
     ],
   },
-  { id: 'edfo-1124', name: 'Zelenina' },
+  { id: 'edfo-1124', name: 'Zelenina', iconClass: 'ico-vegetable' },
   {
     id: 'cvbf-9924',
     name: 'Mléčné výrobky',
+    iconClass: 'ico-milk',
     children: [
       { id: 'jefj-4741', name: 'Mléko' },
       { id: 'qpkd-7542', name: 'Jogurt' },
       { id: 'ruwh-0502', name: 'Tvaroh' },
     ],
   },
-  { id: 'tuhe-8035', name: 'Pečivo' },
+  { id: 'tuhe-8035', name: 'Pečivo', iconClass: 'ico-bread' },
 ];
