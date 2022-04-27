@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { FoodCategory } from '../../model/food-category.interface';
 import { MockCategoryService } from '../../service/mock-category.service';
 import { FoodCategoryFormService } from '../../service/food-category-form.service';
@@ -11,7 +11,6 @@ import { FoodCategoryFormService } from '../../service/food-category-form.servic
   styleUrls: ['./food-subcategory.component.scss'],
 })
 export class FoodSubcategoryComponent implements OnInit, OnDestroy {
-  subscription: Subscription | null = null;
   category: Observable<FoodCategory> = of();
 
   constructor(
@@ -21,18 +20,13 @@ export class FoodSubcategoryComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.route.params.subscribe((p) => {
-      this.category = this.categoryService.category;
+    this.category = this.categoryService.category;
 
-      if (!p) {
-        return;
-      }
-
-      this.formService.setCategoryId(p.id);
-    });
+    if (!this.route.snapshot.params) {
+      return;
+    }
+    this.formService.setCategoryId(this.route.snapshot.params.id);
   }
 
-  ngOnDestroy() {
-    this.subscription?.unsubscribe();
-  }
+  ngOnDestroy() {}
 }

@@ -26,6 +26,9 @@ const routes: Routes = [
   {
     path: 'category/:id',
     component: FoodSubcategoryComponent,
+    data: {
+      reuseRoute: true,
+    },
   },
 ];
 
