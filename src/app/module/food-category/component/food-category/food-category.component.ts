@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { FoodCategory } from '../../model/food-category.interface';
 import { MockCategoryService } from '../../service/mock-category.service';
+import { FoodCategoryFormService } from '../../service/food-category-form.service';
 
 /**
  * Root page food category displaying only first level categories.
@@ -15,9 +16,13 @@ import { MockCategoryService } from '../../service/mock-category.service';
 export class FoodCategoryComponent implements OnInit {
   categoryList: Observable<FoodCategory[]> = of([]);
 
-  constructor(private categoryService: MockCategoryService) {}
+  constructor(
+    private categoryService: MockCategoryService,
+    private formService: FoodCategoryFormService
+  ) {}
 
   ngOnInit(): void {
     this.categoryList = this.categoryService.categoryList;
+    this.formService.setCategoryId(null);
   }
 }

@@ -2,7 +2,7 @@
   <h2>Nový záznam</h2>
 
   <form [formGroup]="recordForm">
-    <!--  Name  -->
+    <!--  Name -->
     <div class="field mb-3">
       <label for="recordName" class="d-block mb-1">Název</label>
       <input
@@ -13,7 +13,7 @@
         formControlName="name"
       />
     </div>
-    <!--    Price -->
+    <!-- Price -->
     <div class="field mb-3">
       <label for="recordPrice" class="d-block mb-1">Cena</label>
       <p-inputNumber
@@ -23,6 +23,30 @@
         currency="CZK"
         locale="cs-CZ"
       ></p-inputNumber>
+    </div>
+    <!-- Category -->
+    <div class="field mb-3">
+      <label for="recordCategory" class="d-block mb-1">Kategorie</label>
+      <p-dropdown
+        id="recordCategory"
+        [options]="categoryList"
+        [editable]="true"
+        optionLabel="name"
+        optionValue="id"
+        formControlName="category"
+      ></p-dropdown>
+    </div>
+    <!-- Market -->
+    <div class="field mb-3">
+      <label for="recordMarket" class="d-block mb-1">Obchod</label>
+      <p-dropdown
+        id="recordMarket"
+        [options]="marketList"
+        [editable]="true"
+        optionLabel="name"
+        optionValue="id"
+        formControlName="market"
+      ></p-dropdown>
     </div>
   </form>
 </div>
