@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FoodCategoryFormService } from '../../service/food-category-form.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import translation from './translation.json';
+import { FoodCategory } from '../../model/food-category.interface';
 
 @Component({
   selector: 'app-new-category',
@@ -15,8 +18,29 @@ export class NewCategoryComponent {
    * With this is associated the url path of creating form.
    */
   categoryId: string | null;
-  constructor(private formService: FoodCategoryFormService) {
+  categoryForm: FormGroup;
+  // should not be static values, change it later
+  categoryList: FoodCategory[] = [
+    { id: 'eufg-8452', name: 'Pecivo' },
+    { id: 'oofe-1120', name: 'Mleko' },
+    { id: 'amsp-9503', name: 'Ovoce' },
+  ];
+  translation = translation;
+
+  constructor(
+    private formService: FoodCategoryFormService,
+    private formBuilder: FormBuilder
+  ) {
     this.categoryId = this.formService.getCategoryId();
-    console.log(this.categoryId);
+
+    // set default form values
+    this.categoryForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      parent: ['', Validators.required], // parent category
+    });
+  }
+
+  onSubmit() {
+    console.log('submit', this.categoryForm);
   }
 }

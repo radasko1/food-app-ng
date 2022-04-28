@@ -22,20 +22,24 @@ export class NewRecordComponent {
   ];
   // should not be static values, change it later
   marketList: Market[] = [
-    { id: '1', name: 'Globus' },
-    { id: '2', name: 'Lidl' },
+    { id: 'market-globus', name: 'Globus' },
+    { id: 'market-lidl', name: 'Lidl' },
   ];
 
   constructor(
-    private formService: FoodCategoryFormService,
+    private categoryFormService: FoodCategoryFormService,
     private formBuilder: FormBuilder
   ) {
     // set form default values
     this.recordForm = this.formBuilder.group({
       name: ['', Validators.required],
-      price: [0, Validators.required],
+      price: [0, [Validators.required, Validators.min(0)]],
       category: ['', Validators.required], // category id
       market: ['', Validators.required], // market id
     });
+  }
+
+  onSubmit() {
+    console.log('submit', this.recordForm);
   }
 }

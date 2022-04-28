@@ -3,7 +3,7 @@
 
   <h2>{{ translation.title }}</h2>
 
-  <form [formGroup]="recordForm">
+  <form [formGroup]="recordForm" (ngSubmit)="onSubmit()" class="mt-5">
     <!--  Name -->
     <div class="field mb-3">
       <label for="recordName" class="d-block mb-1">
