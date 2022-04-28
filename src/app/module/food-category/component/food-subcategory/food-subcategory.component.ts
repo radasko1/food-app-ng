@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FoodCategory } from '../../model/food-category.interface';
 import { MockCategoryService } from '../../service/mock-category.service';
 import { FoodCategoryFormService } from '../../service/food-category-form.service';
+import translation from './translation.json';
 
 @Component({
   selector: 'app-food-subcategory',
@@ -12,6 +13,7 @@ import { FoodCategoryFormService } from '../../service/food-category-form.servic
 })
 export class FoodSubcategoryComponent implements OnInit, OnDestroy {
   category: Observable<FoodCategory> = new Observable<FoodCategory>();
+  translation = translation;
 
   constructor(
     private categoryService: MockCategoryService,

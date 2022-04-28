@@ -1,10 +1,12 @@
 <div class="container">
-  <h2>Nový záznam</h2>
+  <h2>{{ translation.title }}</h2>
 
   <form [formGroup]="recordForm">
     <!--  Name -->
     <div class="field mb-3">
-      <label for="recordName" class="d-block mb-1">Název</label>
+      <label for="recordName" class="d-block mb-1">
+        {{ translation.nameLabel }}
+      </label>
       <input
         pInputText
         id="recordName"
@@ -15,7 +17,9 @@
     </div>
     <!-- Price -->
     <div class="field mb-3">
-      <label for="recordPrice" class="d-block mb-1">Cena</label>
+      <label for="recordPrice" class="d-block mb-1">
+        {{ translation.priceLabel }}
+      </label>
       <p-inputNumber
         id="recordPrice"
         formControlName="price"
@@ -26,7 +30,9 @@
     </div>
     <!-- Category -->
     <div class="field mb-3">
-      <label for="recordCategory" class="d-block mb-1">Kategorie</label>
+      <label for="recordCategory" class="d-block mb-1">
+        {{ translation.categoryLabel }}
+      </label>
       <p-dropdown
         id="recordCategory"
         [options]="categoryList"
@@ -38,7 +44,9 @@
     </div>
     <!-- Market -->
     <div class="field mb-3">
-      <label for="recordMarket" class="d-block mb-1">Obchod</label>
+      <label for="recordMarket" class="d-block mb-1">
+        {{ translation.marketLabel }}
+      </label>
       <p-dropdown
         id="recordMarket"
         [options]="marketList"
@@ -47,6 +55,15 @@
         optionValue="id"
         formControlName="market"
       ></p-dropdown>
+    </div>
+    <!-- Submit -->
+    <div class="field mt-4">
+      <p-button
+        [label]="translation.submitButton"
+        type="submit"
+        icon="pi pi-check"
+        iconPos="right"
+      ></p-button>
     </div>
   </form>
 </div>

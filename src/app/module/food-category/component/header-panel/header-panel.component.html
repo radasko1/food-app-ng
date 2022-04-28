@@ -11,7 +11,7 @@
       icon="pi pi-plus"
       iconPos="left"
       class="p-button-sm no-decoration"
-      label="Přidat kategorii"
+      [label]="translation.addCategory"
     ></button>
     <button
       [routerLink]="['/category/new-record']"
@@ -23,7 +23,7 @@
       iconPos="left"
       class="p-button-sm no-decoration"
       [class.ms-2]="showSubcategoryButton"
-      label="Přidat záznam"
+      [label]="translation.addRecord"
     ></button>
   </div>
 </div>

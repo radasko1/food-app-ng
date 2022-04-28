@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FoodCategoryFormService } from '../../service/food-category-form.service';
 import { FoodCategory } from '../../model/food-category.interface';
 import { Market } from '../../model/food-market.interface';
+import translation from './translation.json';
 
 @Component({
   selector: 'app-new-record',
@@ -10,6 +11,8 @@ import { Market } from '../../model/food-market.interface';
   styleUrls: ['./new-record.component.scss'],
 })
 export class NewRecordComponent {
+  // set of texts used in template
+  translation = translation;
   recordForm: FormGroup;
   // should not be static values, change it later
   categoryList: FoodCategory[] = [
@@ -27,6 +30,7 @@ export class NewRecordComponent {
     private formService: FoodCategoryFormService,
     private formBuilder: FormBuilder
   ) {
+    // set form default values
     this.recordForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: [0, Validators.required],
