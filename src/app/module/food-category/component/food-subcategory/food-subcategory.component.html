@@ -1,8 +1,5 @@
 <div class="container">
-  <app-return-back
-    urlPath="/category"
-    [buttonText]="translation.returnBack"
-  ></app-return-back>
+  <app-return-back urlPath="/category"></app-return-back>
 
   <app-header-panel
     [title]="(category | async)?.name || null"

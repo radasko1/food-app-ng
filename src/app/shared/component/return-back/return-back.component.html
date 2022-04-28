@@ -3,6 +3,6 @@
   icon="pi pi-arrow-left"
   iconPos="left"
   class="no-decoration"
-  [routerLink]="[urlPath]"
-  [label]="buttonText"
+  [label]="!showOnlyIcon ? buttonText || translation.returnBack : ''"
+  (click)="goBack()"
 ></p-button>
