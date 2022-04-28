@@ -5,14 +5,9 @@
   ></app-header-panel>
 
   <div class="row">
-    <div *ngFor="let category of categoryList | async" class="col-3">
+    <div *ngFor="let category of categoryList | async" class="col-2">
       <p-card [routerLink]="['/category', category.id]" class="pointer">
-        <div class="d-flex align-items-center">
-          <i class="ico" [class]="category.iconClass"></i>
-          <div class="ms-3">
-            <strong>{{ category.name }}</strong>
-          </div>
-        </div>
+        <strong>{{ category.name }}</strong>
       </p-card>
     </div>
   </div>

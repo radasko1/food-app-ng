@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FoodCategory } from '../../model/food-category.interface';
 import { MockCategoryService } from '../../service/mock-category.service';
 import { FoodCategoryFormService } from '../../service/food-category-form.service';
@@ -11,7 +11,7 @@ import { FoodCategoryFormService } from '../../service/food-category-form.servic
   styleUrls: ['./food-subcategory.component.scss'],
 })
 export class FoodSubcategoryComponent implements OnInit, OnDestroy {
-  category: Observable<FoodCategory> = of();
+  category: Observable<FoodCategory> = new Observable<FoodCategory>();
 
   constructor(
     private categoryService: MockCategoryService,

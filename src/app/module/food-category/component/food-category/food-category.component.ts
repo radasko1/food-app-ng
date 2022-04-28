@@ -14,7 +14,7 @@ import { FoodCategoryFormService } from '../../service/food-category-form.servic
   styleUrls: ['./food-category.component.scss'],
 })
 export class FoodCategoryComponent implements OnInit {
-  categoryList: Observable<FoodCategory[]> = of([]);
+  categoryList: Observable<FoodCategory[]> = new Observable<FoodCategory[]>();
 
   constructor(
     private categoryService: MockCategoryService,
