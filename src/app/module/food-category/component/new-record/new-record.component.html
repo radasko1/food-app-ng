@@ -17,14 +17,39 @@
         formControlName="name"
       />
     </div>
-    <!-- Price -->
+    <!-- Select price -->
     <div class="field mb-3">
-      <label for="recordPrice" class="d-block mb-1">
+      <label for="recordPriceSelect" class="d-block mb-1"></label>
+      <p-selectButton
+        id="recordPriceSelect"
+        [options]="selectList"
+        optionLabel="name"
+        optionValue="id"
+        formControlName="priceSelect"
+        (onChange)="onSelectTypeChange($event)"
+      ></p-selectButton>
+    </div>
+    <!-- Price - per piece -->
+    <div class="field mb-3" *ngIf="recordForm.value.priceSelect === 'piece'">
+      <label for="recordPricePiece" class="d-block mb-1">
         {{ translation.priceLabel }}
       </label>
       <p-inputNumber
-        id="recordPrice"
-        formControlName="price"
+        id="recordPricePiece"
+        formControlName="pricePerPiece"
+        mode="currency"
+        currency="CZK"
+        locale="cs-CZ"
+      ></p-inputNumber>
+    </div>
+    <!-- Price - per kg -->
+    <div class="field mb-3" *ngIf="recordForm.value.priceSelect === 'kg'">
+      <label for="recordPriceKg" class="d-block mb-1">
+        {{ translation.priceLabel }}
+      </label>
+      <p-inputNumber
+        id="recordPriceKg"
+        formControlName="pricePerKg"
         mode="currency"
         currency="CZK"
         locale="cs-CZ"

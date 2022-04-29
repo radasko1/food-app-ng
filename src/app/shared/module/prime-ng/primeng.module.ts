@@ -5,21 +5,19 @@ import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { RippleModule } from 'primeng/ripple';
 
-// Import / Export
-const MODULE_LIST = [
-  ButtonModule,
-  CardModule,
-  DropdownModule,
-  InputNumberModule,
-  InputTextModule,
-  RippleModule,
-];
-
 @NgModule({
-  imports: MODULE_LIST,
-  exports: MODULE_LIST,
+  exports: [
+    ButtonModule,
+    CardModule,
+    DropdownModule,
+    InputNumberModule,
+    InputTextModule,
+    SelectButtonModule,
+    RippleModule,
+  ],
   providers: [PrimeNGConfig],
 })
 export class PrimeNGModule {
