@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { FoodCategory } from '../../model/food-category.interface';
-import { MockCategoryService } from '../../service/mock-category.service';
 import { FoodCategoryFormService } from '../../service/food-category-form.service';
 import translation from './translation.json';
+import { CategoryApiService } from '../../../../shared/service/category-api.service';
 
 /**
  * Root page food category displaying only first level categories.
@@ -15,16 +15,17 @@ import translation from './translation.json';
   styleUrls: ['./food-category.component.scss'],
 })
 export class FoodCategoryComponent implements OnInit {
-  categoryList: Observable<FoodCategory[]> = new Observable<FoodCategory[]>();
+  categories$: Observable<FoodCategory[]> = new Observable<FoodCategory[]>();
   translation = translation;
 
   constructor(
-    private categoryService: MockCategoryService,
-    private formService: FoodCategoryFormService
+    private formService: FoodCategoryFormService,
+    private categoryApiService: CategoryApiService
   ) {}
 
   ngOnInit(): void {
-    this.categoryList = this.categoryService.categoryList;
+    // set category to null, because in the root category is not possible create food records
     this.formService.setCategoryId(null);
+    this.categories$ = this.categoryApiService.get();
   }
 }

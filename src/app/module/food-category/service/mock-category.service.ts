@@ -8,16 +8,6 @@ export class MockCategoryService {
   private readonly _categoryList: FoodCategory[] = foodCategoryServerResponse;
 
   /**
-   * Get statically created list of food categories.
-   * Contains only top level categories.
-   * Simulation of server response to get first level categories objects from database.
-   */
-  // TODO: change to request from real server
-  get categoryList(): Observable<FoodCategory[]> {
-    return of(this._categoryList);
-  }
-
-  /**
    * Get statically created list of food category.
    * Contains category object with subcategories.
    * Simulation of server response to get subcategory by unique id from database.
