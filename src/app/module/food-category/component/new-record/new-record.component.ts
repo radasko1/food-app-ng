@@ -61,6 +61,8 @@ export class NewRecordComponent {
 
   /**
    * When option of select is changed.
+   * Everytime the select option is change, both price controls are set to null,
+   * because the number field is empty and clean to write value.
    * @param event
    */
   onSelectTypeChange(event: SelectChange) {

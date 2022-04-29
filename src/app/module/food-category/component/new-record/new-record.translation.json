@@ -1,6 +1,7 @@
 {
   "title": "Přidat záznam",
   "nameLabel": "Název produktu",
+  "namePlaceholder": "Celozrná bageta, polohrubá mouka,...",
   "priceLabel": "Cena",
   "categoryLabel": "Kategorie",
   "marketLabel": "Obchod",

@@ -5,17 +5,20 @@
 
   <form [formGroup]="recordForm" (ngSubmit)="onSubmit()" class="mt-5">
     <!--  Name -->
-    <div class="field mb-3">
-      <label for="recordName" class="d-block mb-1">
-        {{ translation.nameLabel }}
-      </label>
-      <input
-        pInputText
-        id="recordName"
-        type="text"
-        class="p-inputtext-sm"
-        formControlName="name"
-      />
+    <div class="row field mb-3">
+      <div class="col-4">
+        <label for="recordName" class="d-block mb-1">
+          {{ translation.nameLabel }}
+        </label>
+        <input
+          pInputText
+          id="recordName"
+          type="text"
+          class="w-100"
+          formControlName="name"
+          [placeholder]="translation.namePlaceholder"
+        />
+      </div>
     </div>
     <!-- Select price -->
     <div class="field mb-3">
@@ -30,58 +33,79 @@
       ></p-selectButton>
     </div>
     <!-- Price - per piece -->
-    <div class="field mb-3" *ngIf="recordForm.value.priceSelect === 'piece'">
-      <label for="recordPricePiece" class="d-block mb-1">
-        {{ translation.priceLabel }}
-      </label>
-      <p-inputNumber
-        id="recordPricePiece"
-        formControlName="pricePerPiece"
-        mode="currency"
-        currency="CZK"
-        locale="cs-CZ"
-      ></p-inputNumber>
+    <div
+      class="row field mb-3"
+      *ngIf="recordForm.value.priceSelect === 'piece'"
+    >
+      <div class="col-4">
+        <label for="recordPricePiece" class="d-block mb-1">
+          {{ translation.priceLabel }}
+        </label>
+        <p-inputNumber
+          id="recordPricePiece"
+          formControlName="pricePerPiece"
+          mode="currency"
+          currency="CZK"
+          locale="cs-CZ"
+          class="w-100"
+          styleClass="w-100"
+          inputStyleClass="w-100"
+        ></p-inputNumber>
+      </div>
     </div>
     <!-- Price - per kg -->
-    <div class="field mb-3" *ngIf="recordForm.value.priceSelect === 'kg'">
-      <label for="recordPriceKg" class="d-block mb-1">
-        {{ translation.priceLabel }}
-      </label>
-      <p-inputNumber
-        id="recordPriceKg"
-        formControlName="pricePerKg"
-        mode="currency"
-        currency="CZK"
-        locale="cs-CZ"
-      ></p-inputNumber>
+    <div class="row field mb-3" *ngIf="recordForm.value.priceSelect === 'kg'">
+      <div class="col-4">
+        <label for="recordPriceKg" class="d-block mb-1">
+          {{ translation.priceLabel }}
+        </label>
+        <p-inputNumber
+          id="recordPriceKg"
+          formControlName="pricePerKg"
+          mode="currency"
+          currency="CZK"
+          locale="cs-CZ"
+          class="w-100"
+          styleClass="w-100"
+          inputStyleClass="w-100"
+        ></p-inputNumber>
+      </div>
     </div>
     <!-- Category -->
-    <div class="field mb-3">
-      <label for="recordCategory" class="d-block mb-1">
-        {{ translation.categoryLabel }}
-      </label>
-      <p-dropdown
-        id="recordCategory"
-        [options]="categoryList"
-        [editable]="true"
-        optionLabel="name"
-        optionValue="id"
-        formControlName="category"
-      ></p-dropdown>
+    <div class="row field mb-3">
+      <div class="col-4">
+        <label for="recordCategory" class="d-block mb-1">
+          {{ translation.categoryLabel }}
+        </label>
+        <p-dropdown
+          id="recordCategory"
+          [options]="categoryList"
+          [editable]="true"
+          optionLabel="name"
+          optionValue="id"
+          formControlName="category"
+          style="w-100"
+          styleClass="w-100"
+        ></p-dropdown>
+      </div>
     </div>
     <!-- Market -->
-    <div class="field mb-3">
-      <label for="recordMarket" class="d-block mb-1">
-        {{ translation.marketLabel }}
-      </label>
-      <p-dropdown
-        id="recordMarket"
-        [options]="marketList"
-        [editable]="true"
-        optionLabel="name"
-        optionValue="id"
-        formControlName="market"
-      ></p-dropdown>
+    <div class="row field mb-3">
+      <div class="col-4">
+        <label for="recordMarket" class="d-block mb-1">
+          {{ translation.marketLabel }}
+        </label>
+        <p-dropdown
+          id="recordMarket"
+          [options]="marketList"
+          [editable]="true"
+          optionLabel="name"
+          optionValue="id"
+          formControlName="market"
+          style="w-100"
+          styleClass="w-100"
+        ></p-dropdown>
+      </div>
     </div>
     <!-- Submit -->
     <div class="field mt-4">
