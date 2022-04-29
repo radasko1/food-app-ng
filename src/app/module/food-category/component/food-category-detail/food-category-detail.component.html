@@ -1,0 +1,8 @@
+<div class="container">
+  <app-return-back urlPath="/category"></app-return-back>
+
+  <app-header-panel
+    [title]="(category$ | async)?.name || null"
+    [showRecordButton]="true"
+  ></app-header-panel>
+</div>

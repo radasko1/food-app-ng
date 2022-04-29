@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FoodCategoryComponent } from './component/food-category/food-category.component';
-import { FoodSubcategoryComponent } from './component/food-subcategory/food-subcategory.component';
+import { FoodCategoryDetailComponent } from './component/food-category-detail/food-category-detail.component';
 import { NewCategoryComponent } from './component/new-category/new-category.component';
 import { NewRecordComponent } from './component/new-record/new-record.component';
 
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'category/:id',
-    component: FoodSubcategoryComponent,
+    component: FoodCategoryDetailComponent,
     data: {
       reuseRoute: true,
     },

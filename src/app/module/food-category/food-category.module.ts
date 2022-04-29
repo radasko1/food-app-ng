@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FoodCategoryComponent } from './component/food-category/food-category.component';
-import { FoodSubcategoryComponent } from './component/food-subcategory/food-subcategory.component';
+import { FoodCategoryDetailComponent } from './component/food-category-detail/food-category-detail.component';
 import { FoodCategoryRoutingModule } from './food-category-routing.module';
-import { MockCategoryService } from './service/mock-category.service';
 import { SharedModule } from '../../shared/module/shared-module/shared.module';
 import { FoodCategoryHeaderPanelComponent } from './component/header-panel/header-panel.component';
 import { NewRecordComponent } from './component/new-record/new-record.component';
@@ -18,7 +17,7 @@ import { FoodCategoryFormService } from './service/food-category-form.service';
  */
 const moduleComponents = [
   FoodCategoryComponent,
-  FoodSubcategoryComponent,
+  FoodCategoryDetailComponent,
   FoodCategoryHeaderPanelComponent,
   NewRecordComponent,
   NewCategoryComponent,
@@ -33,6 +32,6 @@ const moduleComponents = [
     FoodCategoryRoutingModule,
     SharedModule,
   ],
-  providers: [MockCategoryService, FoodCategoryFormService],
+  providers: [FoodCategoryFormService],
 })
 export class FoodCategoryModule {}

@@ -10,7 +10,7 @@ export class FoodCategoryHeaderPanelComponent {
   // set of texts used in template
   translation = translation;
 
-  @Input() showRecordButton = true;
-  @Input() showSubcategoryButton = true;
+  @Input() showRecordButton = false;
+  @Input() showCategoryButton = false;
   @Input() title: string | null = null; // title value can have delay and may be changed more times
 }

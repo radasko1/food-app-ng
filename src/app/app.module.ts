@@ -8,12 +8,15 @@ import { NotFoundModule } from './module/not-found/not-found.module';
 import { SharedModule } from './shared/module/shared-module/shared.module';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteStrategy } from './shared/strategy/custom-route-strategy';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    // import in app module to use HttpClient globally
+    HttpClientModule,
     NotFoundModule, // 404 Page Not Found Module
     FoodCategoryModule,
     SharedModule,

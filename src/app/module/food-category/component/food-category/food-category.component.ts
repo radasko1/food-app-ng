@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { FoodCategory } from '../../model/food-category.interface';
 import { FoodCategoryFormService } from '../../service/food-category-form.service';
-import translation from './translation.json';
+import translation from './food-category.translation.json';
 import { CategoryApiService } from '../../../../shared/service/category-api.service';
 
 /**
- * Root page food category displaying only first level categories.
- * Subcategories each category are visible in category detail further.
+ * List of all available categories.
  */
 @Component({
   selector: 'app-food-category',

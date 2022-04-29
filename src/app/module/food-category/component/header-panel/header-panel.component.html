@@ -4,7 +4,7 @@
   <div class="button-group">
     <button
       [routerLink]="['/category/new-category']"
-      *ngIf="showSubcategoryButton"
+      *ngIf="showCategoryButton"
       pButton
       pRipple
       type="button"
@@ -22,7 +22,7 @@
       icon="pi pi-plus"
       iconPos="left"
       class="p-button-sm no-decoration"
-      [class.ms-2]="showSubcategoryButton"
+      [class.ms-2]="showCategoryButton"
       [label]="translation.addRecord"
     ></button>
   </div>
