@@ -8,7 +8,6 @@ import { SharedModule } from '../../shared/module/shared-module/shared.module';
 import { FoodCategoryHeaderPanelComponent } from './component/header-panel/header-panel.component';
 import { NewRecordComponent } from './component/new-record/new-record.component';
 import { NewCategoryComponent } from './component/new-category/new-category.component';
-import { FoodCategoryFormService } from './service/food-category-form.service';
 
 /**
  * List of components available in the module.
@@ -32,6 +31,5 @@ const moduleComponents = [
     FoodCategoryRoutingModule,
     SharedModule,
   ],
-  providers: [FoodCategoryFormService],
 })
 export class FoodCategoryModule {}

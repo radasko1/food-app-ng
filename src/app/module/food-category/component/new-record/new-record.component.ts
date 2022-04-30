@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FoodCategoryFormService } from '../../service/food-category-form.service';
 import { FoodCategory } from '../../model/food-category.interface';
 import { Market } from '../../model/food-market.interface';
 import translation from './new-record.translation.json';
@@ -32,10 +31,7 @@ export class NewRecordComponent {
     { id: 'market-lidl', name: 'Lidl' },
   ];
 
-  constructor(
-    private categoryFormService: FoodCategoryFormService,
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private formBuilder: FormBuilder) {
     // set form default values
     this.recordForm = this.formBuilder.group({
       // string type
