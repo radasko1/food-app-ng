@@ -1,5 +1,5 @@
 import { Attribute, Component, Input } from '@angular/core';
-import translation from './translation.json';
+import translation from './return-back.translation.json';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 

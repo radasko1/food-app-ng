@@ -1,5 +1,7 @@
 <div class="container">
-  <app-return-back urlPath="/category"></app-return-back>
+  <div class="page-header">
+    <app-return-back urlPath="/category"></app-return-back>
+  </div>
 
   <app-header-panel
     [title]="(category$ | async)?.name || null"
