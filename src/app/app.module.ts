@@ -9,6 +9,8 @@ import { SharedModule } from './shared/module/shared-module/shared.module';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteStrategy } from './shared/strategy/custom-route-strategy';
 import { HttpClientModule } from '@angular/common/http';
+import { RecordModule } from './module/record-form/record-form.module';
+import { CategoryFormModule } from './module/category-form/category-form.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     // import in app module to use HttpClient globally
     HttpClientModule,
     NotFoundModule, // 404 Page Not Found Module
+    RecordModule,
+    CategoryFormModule,
     FoodCategoryModule,
     SharedModule,
     AppRoutingModule,

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import translation from './translation.json';
-import { FoodCategory } from '../../model/food-category.interface';
+import { CategoryApiService } from '../../../../shared/service/category-api.service';
+import { SelectButtonModel } from '../../../../shared/model/select-button.model';
 
 @Component({
   selector: 'app-new-category',
@@ -11,18 +12,24 @@ import { FoodCategory } from '../../model/food-category.interface';
 export class NewCategoryComponent {
   categoryForm: FormGroup;
   // should not be static values, change it later
-  categoryList: FoodCategory[] = [
-    { id: 'eufg-8452', name: 'Pecivo' },
-    { id: 'oofe-1120', name: 'Mleko' },
-    { id: 'amsp-9503', name: 'Ovoce' },
-  ];
+  categoryList: SelectButtonModel[] = [];
   translation = translation;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private categoryApiService: CategoryApiService
+  ) {
     // set default form values
     this.categoryForm = this.formBuilder.group({
       name: ['', Validators.required],
       parent: ['', Validators.required], // parent category
+    });
+
+    this.categoryApiService.get().subscribe((c) => {
+      if (c) {
+        // this.categoryList = c;
+      }
+      console.log(c);
     });
   }
 
