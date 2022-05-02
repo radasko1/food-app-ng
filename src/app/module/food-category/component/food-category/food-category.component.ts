@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { FoodCategory } from '../../model/food-category.interface';
+import { FoodCategory } from '../../../../shared/model/food-category.interface';
 import translation from './food-category.translation.json';
 import { CategoryApiService } from '../../../../shared/service/category-api.service';
 

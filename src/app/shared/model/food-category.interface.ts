@@ -10,12 +10,4 @@ export interface FoodCategory {
    *  Name of the category
    */
   name: string;
-  /**
-   * CSS class for category icon
-   */
-  iconClass?: string;
-  /**
-   * Subcategories, if there are any
-   */
-  children?: FoodCategory[];
 }

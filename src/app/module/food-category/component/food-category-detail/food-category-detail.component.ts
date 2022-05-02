@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import translation from './food-category-detail.translation.json';
 import { Observable } from 'rxjs';
 import { CategoryApiService } from '../../../../shared/service/category-api.service';
-import { FoodCategory } from '../../model/food-category.interface';
+import { FoodCategory } from '../../../../shared/model/food-category.interface';
 
 /**
  * Detail for Category, where can be found list with records.

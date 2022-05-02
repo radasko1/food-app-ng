@@ -1,4 +1,4 @@
-import { FoodCategory } from '../../module/food-category/model/food-category.interface';
+import { FoodCategory } from '../model/food-category.interface';
 
 /**
  * Statically created data as preview of server response with food category collection.

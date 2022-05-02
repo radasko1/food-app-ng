@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import translation from './translation.json';
 import { CategoryApiService } from '../../../../shared/service/category-api.service';
-import { SelectButtonModel } from '../../../../shared/model/select-button.model';
+import { FoodCategory } from '../../../../shared/model/food-category.interface';
 
 @Component({
   selector: 'app-new-category',
@@ -11,8 +11,7 @@ import { SelectButtonModel } from '../../../../shared/model/select-button.model'
 })
 export class NewCategoryComponent {
   categoryForm: FormGroup;
-  // should not be static values, change it later
-  categoryList: SelectButtonModel[] = [];
+  categoryList: FoodCategory[] = [];
   translation = translation;
 
   constructor(
@@ -22,18 +21,25 @@ export class NewCategoryComponent {
     // set default form values
     this.categoryForm = this.formBuilder.group({
       name: ['', Validators.required],
-      parent: ['', Validators.required], // parent category
+      // parent: ['', Validators.required], // parent category
     });
 
     this.categoryApiService.get().subscribe((c) => {
       if (c) {
-        // this.categoryList = c;
+        this.categoryList = c;
       }
-      console.log(c);
     });
   }
 
+  /**
+   * Form submit handler
+   */
   onSubmit() {
-    console.log('submit', this.categoryForm);
+    if (this.categoryForm.status === 'INVALID') {
+      return;
+    }
+
+    // find out if there is better solution than empty subscribe()
+    this.categoryApiService.create(this.categoryForm.value).subscribe();
   }
 }
