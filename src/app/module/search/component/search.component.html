@@ -1,0 +1,10 @@
+<p-autoComplete
+  [(ngModel)]="searchText"
+  [suggestions]="searchResults"
+  [showEmptyMessage]="true"
+  [placeholder]="translation.AutocompletePlaceholder"
+  [emptyMessage]="translation.EmptyResultText"
+  (completeMethod)="search($event)"
+  (onSelect)="select($event)"
+  field="name"
+></p-autoComplete>

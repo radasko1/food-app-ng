@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
@@ -10,6 +11,7 @@ import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   exports: [
+    AutoCompleteModule,
     ButtonModule,
     CardModule,
     DropdownModule,

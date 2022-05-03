@@ -11,6 +11,7 @@ import { CustomRouteStrategy } from './shared/strategy/custom-route-strategy';
 import { HttpClientModule } from '@angular/common/http';
 import { RecordModule } from './module/record-form/record-form.module';
 import { CategoryFormModule } from './module/category-form/category-form.module';
+import { SearchModule } from './module/search/search.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,11 +20,12 @@ import { CategoryFormModule } from './module/category-form/category-form.module'
     BrowserAnimationsModule,
     // import in app module to use HttpClient globally
     HttpClientModule,
+    SharedModule,
     NotFoundModule, // 404 Page Not Found Module
     RecordModule,
     CategoryFormModule,
     FoodCategoryModule,
-    SharedModule,
+    SearchModule,
     AppRoutingModule,
   ],
   providers: [
