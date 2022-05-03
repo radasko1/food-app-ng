@@ -4,9 +4,10 @@
 
 .navigation {
   background-color: map-get($color-palette, "blue");
-  padding: 2.5rem 1rem;
+  padding: 1.5rem 1rem;
   color: map-get($color-palette, "light");
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
