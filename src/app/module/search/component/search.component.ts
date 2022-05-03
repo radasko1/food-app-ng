@@ -3,14 +3,15 @@ import { CategoryApiService } from '../../../shared/service/category-api.service
 import { FoodCategory } from '../../../shared/model/food-category.interface';
 import { Router } from '@angular/router';
 import translation from './search.translation.json';
+import { AutocompleteCompleteModel } from '../../../shared/model/autocomplete-complete.model';
 
 @Component({
   selector: 'app-search',
   templateUrl: 'search.component.html',
 })
 export class SearchComponent implements OnInit {
-  searchText: any;
-  searchResults: any[] = [];
+  searchText = '';
+  searchResults: FoodCategory[] = [];
   categories: FoodCategory[] = [];
   translation = translation;
 
@@ -25,8 +26,12 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  search(event: any) {
-    let filtered: any[] = [];
+  /**
+   * Search values suggest on written text in Autocomplete input element.
+   * @param event
+   */
+  search(event: AutocompleteCompleteModel) {
+    let filtered: FoodCategory[] = [];
     let query = event.query;
 
     for (let i = 0; i < this.categories.length; i++) {
@@ -39,8 +44,17 @@ export class SearchComponent implements OnInit {
     this.searchResults = filtered;
   }
 
-  select(event: any) {
+  /**
+   * Navigate to the searched category detail.
+   *
+   * When user click on searched category in autocomplete input form element,
+   * he is going to be redirected to the category detail page, and text inside
+   * input element will be cleared.
+   *
+   * @param value Selected option from Autocomplete component
+   */
+  select(value: FoodCategory) {
     this.searchText = '';
-    this.router.navigate(['category', event.id]);
+    this.router.navigate(['category', value.id]);
   }
 }
