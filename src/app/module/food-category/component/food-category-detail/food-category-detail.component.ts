@@ -36,6 +36,7 @@ export class FoodCategoryDetailComponent implements OnInit {
     // TODO: cache product collection?
     // TODO: forkJoin?
     this.category$ = this.categoryApiService.getOne(this.categoryId);
+    // TODO: empty table result
     this.products$ = this.categoryApiService.getProducts(this.categoryId);
   }
 }

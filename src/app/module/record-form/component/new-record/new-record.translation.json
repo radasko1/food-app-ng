@@ -3,6 +3,7 @@
   "nameLabel": "Název produktu",
   "namePlaceholder": "Celozrná bageta, polohrubá mouka,...",
   "priceLabel": "Cena",
+  "dateLabel": "Datum nákupu",
   "categoryLabel": "Kategorie",
   "marketLabel": "Obchod",
   "submitButton": "Odeslat"

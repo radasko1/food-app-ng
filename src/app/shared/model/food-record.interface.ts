@@ -14,7 +14,8 @@ export interface FoodRecord {
    */
   price: number;
   /**
-   * Date when was product bought
+   * Date when was product bought.
+   * Needs to be in ISO format pass into server via POST request.
    */
   date?: Date;
   /**

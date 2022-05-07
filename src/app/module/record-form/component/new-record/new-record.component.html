@@ -22,30 +22,15 @@
         />
       </div>
     </div>
-    <!-- Select price -->
-    <div class="field mb-3">
-      <label for="recordPriceSelect" class="d-block mb-1"></label>
-      <p-selectButton
-        id="recordPriceSelect"
-        [options]="selectList"
-        optionLabel="name"
-        optionValue="id"
-        formControlName="priceSelect"
-        (onChange)="onSelectTypeChange($event)"
-      ></p-selectButton>
-    </div>
-    <!-- Price - per piece -->
-    <div
-      class="row field mb-3"
-      *ngIf="recordForm.value.priceSelect === 'piece'"
-    >
+    <!-- Price -->
+    <div class="row field mb-3">
       <div class="col-4">
-        <label for="recordPricePiece" class="d-block mb-1">
+        <label for="recordPrice" class="d-block mb-1">
           {{ translation.priceLabel }}
         </label>
         <p-inputNumber
-          id="recordPricePiece"
-          formControlName="pricePerPiece"
+          id="recordPrice"
+          formControlName="price"
           mode="currency"
           currency="CZK"
           locale="cs-CZ"
@@ -55,55 +40,54 @@
         ></p-inputNumber>
       </div>
     </div>
-    <!-- Price - per kg -->
-    <div class="row field mb-3" *ngIf="recordForm.value.priceSelect === 'kg'">
+    <!-- Calendar -->
+    <div class="row field mb-3">
       <div class="col-4">
-        <label for="recordPriceKg" class="d-block mb-1">
-          {{ translation.priceLabel }}
+        <label for="recordDate" class="d-block mb-1">
+          {{ translation.dateLabel }}
         </label>
-        <p-inputNumber
-          id="recordPriceKg"
-          formControlName="pricePerKg"
-          mode="currency"
-          currency="CZK"
-          locale="cs-CZ"
+        <p-calendar
+          id="recordDate"
+          formControlName="date"
+          dateFormat="dd.mm.yy"
+          [showTime]="false"
+          [firstDayOfWeek]="1"
           class="w-100"
           styleClass="w-100"
-          inputStyleClass="w-100"
-        ></p-inputNumber>
+        ></p-calendar>
       </div>
     </div>
     <!-- Category -->
-    <div class="row field mb-3">
+    <div *ngIf="categories$ | async as categories" class="row field mb-3">
       <div class="col-4">
         <label for="recordCategory" class="d-block mb-1">
           {{ translation.categoryLabel }}
         </label>
         <p-dropdown
           id="recordCategory"
-          [options]="categoryList"
+          [options]="categories"
           [editable]="true"
           optionLabel="name"
           optionValue="id"
-          formControlName="category"
+          formControlName="categoryId"
           style="w-100"
           styleClass="w-100"
         ></p-dropdown>
       </div>
     </div>
     <!-- Market -->
-    <div class="row field mb-3">
+    <div *ngIf="markets$ | async as markets" class="row field mb-3">
       <div class="col-4">
         <label for="recordMarket" class="d-block mb-1">
           {{ translation.marketLabel }}
         </label>
         <p-dropdown
           id="recordMarket"
-          [options]="marketList"
+          [options]="markets"
           [editable]="true"
           optionLabel="name"
           optionValue="id"
-          formControlName="market"
+          formControlName="marketId"
           style="w-100"
           styleClass="w-100"
         ></p-dropdown>
