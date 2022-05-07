@@ -9,6 +9,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   exports: [
@@ -21,6 +22,7 @@ import { TableModule } from 'primeng/table';
     InputTextModule,
     RippleModule,
     TableModule,
+    ToastModule,
   ],
   providers: [PrimeNGConfig],
 })
