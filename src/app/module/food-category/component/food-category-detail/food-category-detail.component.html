@@ -7,4 +7,24 @@
     [title]="(category$ | async)?.name || null"
     [showRecordButton]="true"
   ></app-header-panel>
+
+  <!-- Products -->
+  <div *ngIf="products$ | async as products" class="product-list">
+    <p-table [value]="products">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="name">{{ translation.tableColumnName }} <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="price">{{ translation.tableColumnPrice }} <p-sortIcon field="price"></p-sortIcon></th>
+          <th pSortableColumn="date">{{ translation.tableColumnDate }} <p-sortIcon field="date"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td>{{ product.date | date: 'd. M. yyyy' }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>

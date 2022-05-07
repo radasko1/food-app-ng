@@ -1,3 +1,6 @@
 {
-  "returnBack": "Zpět na seznam kategorií"
+  "returnBack": "Zpět na seznam kategorií",
+  "tableColumnName": "Název",
+  "tableColumnPrice": "Cena",
+  "tableColumnDate": "Datum"
 }

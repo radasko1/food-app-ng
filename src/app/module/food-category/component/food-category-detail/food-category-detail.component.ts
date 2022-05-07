@@ -4,6 +4,7 @@ import translation from './food-category-detail.translation.json';
 import { Observable } from 'rxjs';
 import { CategoryApiService } from '../../../../shared/service/category-api.service';
 import { FoodCategory } from '../../../../shared/model/food-category.interface';
+import { FoodRecord } from '../../../../shared/model/food-record.interface';
 
 /**
  * Detail for Category, where can be found list with records.
@@ -13,8 +14,10 @@ import { FoodCategory } from '../../../../shared/model/food-category.interface';
   templateUrl: './food-category-detail.component.html',
   styleUrls: ['./food-category-detail.component.scss'],
 })
-export class FoodCategoryDetailComponent implements OnInit, OnDestroy {
+export class FoodCategoryDetailComponent implements OnInit {
+  categoryId = '';
   category$ = new Observable<FoodCategory>();
+  products$ = new Observable<FoodRecord[]>();
   translation = translation;
 
   constructor(
@@ -27,11 +30,12 @@ export class FoodCategoryDetailComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // cache this response from category list page
-    this.category$ = this.categoryApiService.getOne(
-      this.route.snapshot.params.id
-    );
-  }
+    this.categoryId = this.route.snapshot.params.id;
 
-  ngOnDestroy() {}
+    // cache this response from category list page
+    // TODO: cache product collection?
+    // TODO: forkJoin?
+    this.category$ = this.categoryApiService.getOne(this.categoryId);
+    this.products$ = this.categoryApiService.getProducts(this.categoryId);
+  }
 }

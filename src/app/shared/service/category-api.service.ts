@@ -3,7 +3,8 @@ import { environment } from '../../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { FoodCategory } from '../model/food-category.interface';
-import { map, shareReplay } from 'rxjs/operators';
+import { shareReplay } from 'rxjs/operators';
+import { FoodRecord } from "../model/food-record.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,13 @@ export class CategoryApiService {
    */
   create(formBody: unknown): Observable<FoodCategory> {
     return this.http.post<FoodCategory>(this.apiUrlPath, formBody);
+  }
+
+  /**
+   * Get collection of products from Category
+   * @param id
+   */
+  getProducts(id: string): Observable<FoodRecord[]> {
+    return this.http.get<FoodRecord[]>(this.apiUrlPath + id + '/products');
   }
 }

@@ -14,6 +14,10 @@ export interface FoodRecord {
    */
   price: number;
   /**
+   * Date when was product bought
+   */
+  date?: Date;
+  /**
    * Product record unique category identifier
    */
   category: number;
