@@ -5,7 +5,7 @@
   "priceLabel": "Cena",
   "pricePlaceholder": "Cena (za kus/kg)",
   "dateLabel": "Datum nákupu",
-  "categoryLabel": "Kategorie",
+  "productLabel": "Produkt",
   "marketLabel": "Obchod",
   "submitButton": "Odeslat",
   "addSuccess": "Položka byla úspěšně přidána."

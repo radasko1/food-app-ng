@@ -4,7 +4,7 @@ import { CustomPreloadStrategy } from './shared/strategy/custom-preload-strategy
 
 const routes: Routes = [
   /**
-   * Keep this path empty allow user divide "/category" from "/category/4" and show different component.
+   * Keep this path empty allow user divide "/product" from "/product/4" and show different component.
    * The empty path is probably not helping the way of lazy loaded modules, because empty path is triggered
    * almost always, if user not coming straight to the specific path.
    * There must be better solution to have path filled and divide routes in module.

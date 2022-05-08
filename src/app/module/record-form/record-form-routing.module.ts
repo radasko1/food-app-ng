@@ -4,7 +4,7 @@ import { NewRecordComponent } from './component/new-record/new-record.component'
 
 const routes: Routes = [
   {
-    path: 'category/new-record',
+    path: 'product/new-record',
     component: NewRecordComponent,
   },
 ];

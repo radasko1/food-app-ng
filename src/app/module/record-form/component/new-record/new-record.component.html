@@ -58,19 +58,19 @@
         ></p-calendar>
       </div>
     </div>
-    <!-- Category -->
-    <div *ngIf="categories$ | async as categories" class="row field mb-3">
+    <!-- Product -->
+    <div *ngIf="products$ | async as categories" class="row field mb-3">
       <div class="col-4">
-        <label for="recordCategory" class="d-block mb-1">
-          {{ translation.categoryLabel }}
+        <label for="recordProduct" class="d-block mb-1">
+          {{ translation.productLabel }}
         </label>
         <p-dropdown
-          id="recordCategory"
+          id="recordProduct"
           [options]="categories"
           [editable]="true"
           optionLabel="name"
           optionValue="id"
-          formControlName="categoryId"
+          formControlName="productId"
           style="w-100"
           styleClass="w-100"
         ></p-dropdown>

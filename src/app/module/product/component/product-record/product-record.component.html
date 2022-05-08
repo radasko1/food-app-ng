@@ -1,15 +1,15 @@
 <div class="container">
   <div class="page-header">
-    <app-return-back urlPath="/category"></app-return-back>
+    <app-return-back urlPath="/product"></app-return-back>
   </div>
 
   <app-header-panel
-    [title]="(category$ | async)?.name || null"
+    [title]="(products$ | async)?.name || null"
     [showRecordButton]="true"
   ></app-header-panel>
 
   <!-- Products -->
-  <div *ngIf="products$ | async as products" class="product-list">
+  <div *ngIf="productRecords$ | async as products" class="product-list">
     <p-table [value]="products">
       <ng-template pTemplate="header">
         <tr>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryApiService } from '../../../shared/service/category-api.service';
-import { FoodCategory } from '../../../shared/model/food-category.interface';
+import { ProductService } from '../../../shared/service/product.service';
+import { Product } from '../../../shared/model/product.interface';
 import { Router } from '@angular/router';
 import translation from './search.translation.json';
 import { AutocompleteCompleteModel } from '../../../shared/model/autocomplete-complete.model';
@@ -11,18 +11,18 @@ import { AutocompleteCompleteModel } from '../../../shared/model/autocomplete-co
 })
 export class SearchComponent implements OnInit {
   searchText = '';
-  searchResults: FoodCategory[] = [];
-  categories: FoodCategory[] = [];
+  searchResults: Product[] = [];
+  products: Product[] = [];
   translation = translation;
 
   constructor(
-    private categoryApiService: CategoryApiService,
+    private productService: ProductService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.categoryApiService.get().subscribe((c) => {
-      this.categories = c;
+    this.productService.get().subscribe((c) => {
+      this.products = c;
     });
   }
 
@@ -31,13 +31,13 @@ export class SearchComponent implements OnInit {
    * @param event
    */
   search(event: AutocompleteCompleteModel) {
-    let filtered: FoodCategory[] = [];
+    let filtered: Product[] = [];
     let query = event.query;
 
-    for (let i = 0; i < this.categories.length; i++) {
-      let category = this.categories[i];
-      if (category.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
-        filtered.push(category);
+    for (let i = 0; i < this.products.length; i++) {
+      let product = this.products[i];
+      if (product.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+        filtered.push(product);
       }
     }
 
@@ -45,16 +45,16 @@ export class SearchComponent implements OnInit {
   }
 
   /**
-   * Navigate to the searched category detail.
+   * Navigate to the searched Product.
    *
-   * When user click on searched category in autocomplete input form element,
-   * he is going to be redirected to the category detail page, and text inside
+   * When user click on searched Product in autocomplete input form element,
+   * he is going to be redirected to the Product page, and text inside
    * input element will be cleared.
    *
    * @param value Selected option from Autocomplete component
    */
-  select(value: FoodCategory) {
+  select(value: Product) {
     this.searchText = '';
-    this.router.navigate(['category', value.id]);
+    this.router.navigate(['product', value.id]);
   }
 }

@@ -1,4 +1,4 @@
-export interface FoodRecord {
+export interface ProductRecord {
   /**
    * Food record uniquer identifier.
    * There is no place to use this value yet.
@@ -19,16 +19,16 @@ export interface FoodRecord {
    */
   date?: Date;
   /**
-   * Product record unique category identifier
+   * Product record unique Product identifier
    */
-  category: number;
+  product: number;
   /**
    * Product record unique market identifier
    */
   marketId: number;
   /**
    * Name of Market.
-   * Used in API providing list of Products from Category.
+   * Used in API providing list of Product records.
    */
   market?: string;
 }

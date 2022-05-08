@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NewCategoryComponent } from './component/new-category/new-category.component';
+import { NewProductComponent } from './component/new-product/new-product.component';
 
 const routes: Routes = [
   {
-    path: 'category/new-category',
-    component: NewCategoryComponent,
+    path: 'product/new-product',
+    component: NewProductComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CategoryFormRoutingModule {}
+export class ProductFormRoutingModule {}

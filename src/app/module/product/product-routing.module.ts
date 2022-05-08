@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FoodCategoryComponent } from './component/food-category/food-category.component';
-import { FoodCategoryDetailComponent } from './component/food-category-detail/food-category-detail.component';
+import { ProductComponent } from './component/product/product.component';
+import { ProductRecordComponent } from './component/product-record/product-record.component';
 
 /**
  * Path list is ordered in way, that some of them may collide with each other.
@@ -10,12 +10,12 @@ import { FoodCategoryDetailComponent } from './component/food-category-detail/fo
  */
 const routes: Routes = [
   {
-    path: 'category',
-    component: FoodCategoryComponent,
+    path: 'product',
+    component: ProductComponent,
   },
   {
-    path: 'category/:id',
-    component: FoodCategoryDetailComponent,
+    path: 'product/:id',
+    component: ProductRecordComponent,
     data: {
       reuseRoute: true,
     },
@@ -26,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FoodCategoryRoutingModule {}
+export class ProductRoutingModule {}
