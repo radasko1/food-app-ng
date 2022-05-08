@@ -6,5 +6,6 @@
   "dateLabel": "Datum nákupu",
   "categoryLabel": "Kategorie",
   "marketLabel": "Obchod",
-  "submitButton": "Odeslat"
+  "submitButton": "Odeslat",
+  "addSuccess": "Položka byla úspěšně přidána."
 }

@@ -58,7 +58,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
       .subscribe((n) => {
         this.messageService.add({
           severity: 'success',
-          summary: 'Položka byla přidána.',
+          summary: translation.addSuccess,
           life: 2200,
         });
         this.recordForm.reset();

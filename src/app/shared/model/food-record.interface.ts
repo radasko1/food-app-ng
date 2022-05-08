@@ -25,5 +25,10 @@ export interface FoodRecord {
   /**
    * Product record unique market identifier
    */
-  market: number;
+  marketId: number;
+  /**
+   * Name of Market.
+   * Used in API providing list of Products from Category.
+   */
+  market: string;
 }

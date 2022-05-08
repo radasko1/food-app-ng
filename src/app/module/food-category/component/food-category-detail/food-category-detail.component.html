@@ -16,6 +16,7 @@
           <th pSortableColumn="name">{{ translation.tableColumnName }} <p-sortIcon field="name"></p-sortIcon></th>
           <th pSortableColumn="price">{{ translation.tableColumnPrice }} <p-sortIcon field="price"></p-sortIcon></th>
           <th pSortableColumn="date">{{ translation.tableColumnDate }} <p-sortIcon field="date"></p-sortIcon></th>
+          <th pSortableColumn="market">{{ translation.tableColumnMarket }} <p-sortIcon field="market"></p-sortIcon></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-product>
@@ -23,6 +24,7 @@
           <td>{{ product.name }}</td>
           <td>{{ product.price }} Kč</td>
           <td>{{ product.date | date: 'd. M. yyyy' }}</td>
+          <td>{{ product.market }}</td>
         </tr>
       </ng-template>
     </p-table>
