@@ -30,5 +30,5 @@ export interface FoodRecord {
    * Name of Market.
    * Used in API providing list of Products from Category.
    */
-  market: string;
+  market?: string;
 }
