@@ -13,4 +13,9 @@ export class ProductHeaderPanelComponent {
   @Input() showRecordButton = false;
   @Input() showProductButton = false;
   @Input() title: string | null = null; // title value can have delay and may be changed more times
+  /**
+   * Identifier of product used in new record form.
+   * Fill product identifier form control in new record form if user navigate from product detail page.
+   */
+  @Input() productId: string | null = null;
 }

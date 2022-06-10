@@ -8,6 +8,7 @@ import { MarketApiService } from '../../../../shared/service/market-api.service'
 import { ProductRecordService } from '../../../../shared/service/product-record.service';
 import translation from './new-record.translation.json';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-new-record',
@@ -23,6 +24,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   translation = translation;
 
   constructor(
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private marketApiService: MarketApiService,
@@ -42,6 +44,17 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.products$ = this.productService.get();
     this.markets$ = this.marketApiService.get();
+
+    const routeQueryParams = this.route.snapshot.queryParams;
+    if (routeQueryParams && routeQueryParams['productId']) {
+      this.recordForm.patchValue({
+        productId: parseInt(routeQueryParams['productId'], 10)
+      })
+    }
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 
   /**
@@ -55,7 +68,11 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 
     this.subs = this.productApiService
       .create(this.recordForm.value)
-      .subscribe((n) => {
+      .subscribe((form) => {
+        if (!form) {
+          return;
+        }
+
         this.messageService.add({
           severity: 'success',
           summary: translation.addSuccess,
@@ -63,9 +80,5 @@ export class NewRecordComponent implements OnInit, OnDestroy {
         });
         this.recordForm.reset();
       });
-  }
-
-  ngOnDestroy() {
-    this.subs.unsubscribe();
   }
 }

@@ -5,7 +5,7 @@ export interface Product {
   /**
    * Unique identifier for product
    */
-  id: string;
+  id: number;
   /**
    *  Name of the product
    */

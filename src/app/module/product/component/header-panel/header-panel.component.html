@@ -15,6 +15,7 @@
     ></button>
     <button
       [routerLink]="['/product/new-record']"
+      [queryParams]="{ productId: productId }"
       *ngIf="showRecordButton"
       pButton
       pRipple
