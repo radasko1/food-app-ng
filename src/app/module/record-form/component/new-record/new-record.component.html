@@ -67,7 +67,7 @@
         <p-dropdown
           id="recordProduct"
           [options]="categories"
-          [editable]="true"
+          [placeholder]="translation.productPlaceholder"
           optionLabel="name"
           optionValue="id"
           formControlName="productId"
@@ -85,7 +85,7 @@
         <p-dropdown
           id="recordMarket"
           [options]="markets"
-          [editable]="true"
+          [placeholder]="translation.marketPlaceholder"
           optionLabel="name"
           optionValue="id"
           formControlName="marketId"

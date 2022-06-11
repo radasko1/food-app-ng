@@ -6,7 +6,9 @@
   "pricePlaceholder": "Cena (za kus/kg)",
   "dateLabel": "Datum nákupu",
   "productLabel": "Produkt",
+  "productPlaceholder": "Vyberte produkt",
   "marketLabel": "Obchod",
+  "marketPlaceholder": "Vyberte obchod",
   "submitButton": "Odeslat",
   "addSuccess": "Položka byla úspěšně přidána."
 }
