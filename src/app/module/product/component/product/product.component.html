@@ -1,14 +1,10 @@
 <div class="container">
-  <div class="page-header"></div>
+	<div class="page-header"></div>
 
-  <app-header-panel
-    [title]="translation.title"
-    [showProductButton]="true"
-  ></app-header-panel>
+	<app-header-panel
+		[title]="translation.title"
+		[showProductButton]="true"
+	></app-header-panel>
 
-  <div class="row">
-    <div *ngFor="let product of products$ | async" class="col-2">
-      <a [routerLink]="['/product', product.id]" class="pointer"><strong>{{ product.name }}</strong></a>
-    </div>
-  </div>
+	<app-product-list [dataSource]="products$"></app-product-list>
 </div>

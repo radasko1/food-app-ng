@@ -5,6 +5,7 @@ import { ProductRecordComponent } from './component/product-record/product-recor
 import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from '../../shared/module/shared-module/shared.module';
 import { ProductHeaderPanelComponent } from './component/header-panel/header-panel.component';
+import { ProductListComponent } from "./component/product-list/product-list.component";
 
 /**
  * List of components available in the module.
@@ -15,6 +16,7 @@ const moduleComponents = [
   ProductComponent,
   ProductRecordComponent,
   ProductHeaderPanelComponent,
+  ProductListComponent
 ];
 
 @NgModule({
