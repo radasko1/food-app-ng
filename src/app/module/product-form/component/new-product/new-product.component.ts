@@ -3,20 +3,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import translation from './new-product.translation.json';
 import { ProductService } from '../../../../shared/service/product.service';
 import { Product } from '../../../../shared/model/product.interface';
+import { Subscription } from "rxjs";
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.scss'],
+  providers: [MessageService],
 })
 export class NewProductComponent {
   productForm: FormGroup;
   productList: Product[] = [];
   translation = translation;
+  subs: Subscription = new Subscription();
 
   constructor(
     private formBuilder: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
+    private messageService: MessageService
   ) {
     // set default form values
     this.productForm = this.formBuilder.group({
@@ -39,6 +44,17 @@ export class NewProductComponent {
     }
 
     // find out if there is better solution than empty subscribe()
-    this.productService.create(this.productForm.value).subscribe();
+    this.subs = this.productService.create(this.productForm.value).subscribe((form) => {
+      if (!form) {
+        return;
+      }
+
+      this.messageService.add({
+        severity: 'success',
+        summary: translation.addSuccess,
+        life: 2200,
+      });
+      this.productForm.reset();
+    });
   }
 }

@@ -3,7 +3,6 @@ import { PrimeNGConfig } from 'primeng/api';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
-import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,7 +15,6 @@ import { ToastModule } from 'primeng/toast';
     AutoCompleteModule,
     ButtonModule,
     CalendarModule,
-    CardModule,
     DropdownModule,
     InputNumberModule,
     InputTextModule,
