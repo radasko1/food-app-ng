@@ -21,7 +21,7 @@ export class ProductService {
 	/**
 	 * Get collection of Product entities.
 	 */
-	get(): Observable<Product[]> {
+	getProducts(): Observable<Product[]> {
 		if (!this._products$) {
 			this._products$ = this.http
 				.get<Product[]>(this.apiUrlPath)
@@ -30,11 +30,18 @@ export class ProductService {
 		return this._products$;
 	}
 
+  /**
+   * Clear Product cache.
+   */
+  clearProducts() {
+    this._products$ = null;
+  }
+
 	/**
 	 * Get Product entity by unique id
 	 * @param id
 	 */
-	getOne(id: string): Observable<Product> {
+	getSingleProduct(id: string): Observable<Product> {
 		return this.http.get<Product>(this.apiUrlPath + id);
 	}
 
@@ -42,7 +49,7 @@ export class ProductService {
 	 * Create new Product entity
 	 * @param formBody
 	 */
-	create(formBody: FormBody): Observable<Product> {
+	createProduct(formBody: FormBody): Observable<Product> {
 		return this.http.post<Product>(this.apiUrlPath, formBody);
 	}
 

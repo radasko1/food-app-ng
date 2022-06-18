@@ -43,7 +43,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.products$ = this.productService.get();
+    this.products$ = this.productService.getProducts();
     this.markets$ = this.marketApiService.get();
     this.routeParams = this.route.snapshot.queryParams;
 

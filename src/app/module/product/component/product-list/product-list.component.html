@@ -2,7 +2,7 @@
   <div *ngFor="let listItem of dataList | keyvalue" class="product-list__group">
     <h3 class="product-list__title">{{ listItem.key }}</h3>
     <div *ngFor="let item of listItem.value" class="product-list__item">
-      <a [routerLink]="['/product', item.id]" class="pointer">
+      <a [routerLink]="['/product', item.id]" class="product-list__link pointer">
         <strong>{{ item.name }}</strong>
       </a>
     </div>

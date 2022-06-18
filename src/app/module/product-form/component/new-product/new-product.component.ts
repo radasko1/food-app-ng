@@ -3,58 +3,62 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import translation from './new-product.translation.json';
 import { ProductService } from '../../../../shared/service/product.service';
 import { Product } from '../../../../shared/model/product.interface';
-import { Subscription } from "rxjs";
-import { MessageService } from "primeng/api";
+import { Subscription } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-new-product',
-  templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.scss'],
-  providers: [MessageService],
+	selector: 'app-new-product',
+	templateUrl: './new-product.component.html',
+	styleUrls: ['./new-product.component.scss'],
+	providers: [MessageService],
 })
 export class NewProductComponent {
-  productForm: FormGroup;
-  productList: Product[] = [];
-  translation = translation;
-  subs: Subscription = new Subscription();
+	productForm: FormGroup;
+	productList: Product[] = [];
+	translation = translation;
+	subs: Subscription = new Subscription();
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private productService: ProductService,
-    private messageService: MessageService
-  ) {
-    // set default form values
-    this.productForm = this.formBuilder.group({
-      name: ['', Validators.required],
-    });
+	constructor(
+		private formBuilder: FormBuilder,
+		private productService: ProductService,
+		private messageService: MessageService
+	) {
+		// set default form values
+		this.productForm = this.formBuilder.group({
+			name: ['', Validators.required],
+		});
 
-    this.productService.get().subscribe((c) => {
-      if (c) {
-        this.productList = c;
-      }
-    });
-  }
+		this.productService.getProducts().subscribe((c) => {
+			if (c) {
+				this.productList = c;
+			}
+		});
+	}
 
-  /**
-   * Form submit handler
-   */
-  onSubmit() {
-    if (this.productForm.status === 'INVALID') {
-      return;
-    }
+	/**
+	 * Form submit handler
+	 */
+	onSubmit() {
+		if (this.productForm.status === 'INVALID') {
+			return;
+		}
 
-    // find out if there is better solution than empty subscribe()
-    this.subs = this.productService.create(this.productForm.value).subscribe((form) => {
-      if (!form) {
-        return;
-      }
+		// find out if there is better solution than empty subscribe()
+		this.subs = this.productService
+			.createProduct(this.productForm.value)
+			.subscribe((form) => {
+				if (!form) {
+					return;
+				}
 
-      this.messageService.add({
-        severity: 'success',
-        summary: translation.addSuccess,
-        life: 2200,
-      });
-      this.productForm.reset();
-    });
-  }
+				this.messageService.add({
+					severity: 'success',
+					summary: translation.addSuccess,
+					life: 2200,
+				});
+
+				this.productForm.reset();
+				this.productService.clearProducts();
+			});
+	}
 }

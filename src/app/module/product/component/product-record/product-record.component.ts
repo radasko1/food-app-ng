@@ -35,7 +35,7 @@ export class ProductRecordComponent implements OnInit {
     // cache this response from Product list page
     // TODO: cache product collection?
     // TODO: forkJoin?
-    this.products$ = this.productService.getOne(this.productId);
+    this.products$ = this.productService.getSingleProduct(this.productId);
     // TODO: empty table result
     this.productRecords$ = this.productService.getProductRecords(this.productId);
   }
