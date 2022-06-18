@@ -8,7 +8,7 @@ import { MarketApiService } from '../../../../shared/service/market-api.service'
 import { ProductRecordService } from '../../../../shared/service/product-record.service';
 import translation from './new-record.translation.json';
 import { MessageService } from 'primeng/api';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: 'app-new-record',
@@ -20,6 +20,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   recordForm: FormGroup;
   products$ = new Observable<Product[]>();
   markets$ = new Observable<Market[]>();
+  routeParams: Params | null = null;
   subs: Subscription = new Subscription();
   translation = translation;
 
@@ -44,11 +45,11 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.products$ = this.productService.get();
     this.markets$ = this.marketApiService.get();
+    this.routeParams = this.route.snapshot.queryParams;
 
-    const routeQueryParams = this.route.snapshot.queryParams;
-    if (routeQueryParams && routeQueryParams['productId']) {
+    if (this.routeParams && this.routeParams['productId']) {
       this.recordForm.patchValue({
-        productId: parseInt(routeQueryParams['productId'], 10)
+        productId: parseInt(this.routeParams['productId'], 10)
       })
     }
   }
@@ -78,7 +79,11 @@ export class NewRecordComponent implements OnInit, OnDestroy {
           summary: translation.addSuccess,
           life: 2200,
         });
+
         this.recordForm.reset();
+        if (this.routeParams && this.routeParams['productId']) {
+          this.productService.removeProductRecord(this.routeParams['productId'])
+        }
       });
   }
 }
