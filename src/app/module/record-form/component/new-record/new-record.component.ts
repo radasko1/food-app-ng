@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { ProductService } from '../../../../shared/service/product.service';
 import { Product } from '../../../../shared/model/product.interface';
@@ -17,7 +17,7 @@ import { ActivatedRoute, Params } from "@angular/router";
   providers: [MessageService],
 })
 export class NewRecordComponent implements OnInit, OnDestroy {
-  recordForm: FormGroup;
+  recordForm: UntypedFormGroup;
   products$ = new Observable<Product[]>();
   markets$ = new Observable<Market[]>();
   routeParams: Params | null = null;
@@ -26,7 +26,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private productService: ProductService,
     private marketApiService: MarketApiService,
     private productApiService: ProductRecordService,

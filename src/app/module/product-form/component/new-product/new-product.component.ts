@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import translation from './new-product.translation.json';
 import { ProductService } from '../../../../shared/service/product.service';
 import { Product } from '../../../../shared/model/product.interface';
@@ -13,13 +13,13 @@ import { MessageService } from 'primeng/api';
 	providers: [MessageService],
 })
 export class NewProductComponent {
-	productForm: FormGroup;
+	productForm: UntypedFormGroup;
 	productList: Product[] = [];
 	translation = translation;
 	subs: Subscription = new Subscription();
 
 	constructor(
-		private formBuilder: FormBuilder,
+		private formBuilder: UntypedFormBuilder,
 		private productService: ProductService,
 		private messageService: MessageService
 	) {
