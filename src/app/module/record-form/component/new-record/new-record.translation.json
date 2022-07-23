@@ -4,6 +4,8 @@
   "namePlaceholder": "Celozrná bageta, polohrubá mouka,...",
   "priceLabel": "Cena",
   "pricePlaceholder": "Cena (za kus/kg)",
+  "weightLabel": "Hmotnost",
+  "weightPlaceholder": "Hmotnost (gram)",
   "dateLabel": "Datum nákupu",
   "productLabel": "Produkt",
   "productPlaceholder": "Vyberte produkt",

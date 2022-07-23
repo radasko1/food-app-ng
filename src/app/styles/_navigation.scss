@@ -3,9 +3,9 @@
  */
 
 .navigation {
-  background-color: map-get($color-palette, "blue");
+  background-color: map-get($color-palette, "primary");
   padding: 1.5rem 3rem;
-  color: map-get($color-palette, "light");
+  color: map-get($color-palette, "dark");
   display: flex;
   align-items: center;
   justify-content: space-between;

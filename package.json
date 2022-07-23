@@ -1,6 +1,8 @@
 {
   "name": "food-app-frontend",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Mealer is application to log food prices of each markets at any time.",
+  "keywords": ["mealer", "food app", "food price"],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,6 +21,7 @@
     "@angular/platform-browser": "^14.0.6",
     "@angular/platform-browser-dynamic": "^14.0.6",
     "@angular/router": "^14.0.6",
+    "@auth0/auth0-angular": "^1.10.0",
     "bootstrap": "^5.1.3",
     "primeicons": "^5.0.0",
     "primeng": "^13.3.3",

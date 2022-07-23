@@ -36,6 +36,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
     this.recordForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: [null, Validators.required],
+      weight: [null],
       date: [null, Validators.required],
       productId: ['', Validators.required],
       marketId: ['', Validators.required],

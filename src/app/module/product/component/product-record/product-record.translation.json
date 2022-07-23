@@ -3,5 +3,6 @@
   "tableColumnName": "Název",
   "tableColumnPrice": "Cena",
   "tableColumnDate": "Datum",
+  "weightColumnDate": "Hmotnost",
   "tableColumnMarket": "Obchod"
 }

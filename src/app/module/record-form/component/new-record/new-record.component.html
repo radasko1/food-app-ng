@@ -41,6 +41,23 @@
         ></p-inputNumber>
       </div>
     </div>
+    <!-- Weight -->
+    <div class="row field mb-3">
+      <div class="col-4">
+        <label for="recordWeight" class="d-block mb-1">
+          {{ translation.weightLabel }}
+        </label>
+        <p-inputNumber
+          id="recordWeight"
+          formControlName="weight"
+          suffix=" g"
+          class="w-100"
+          styleClass="w-100"
+          inputStyleClass="w-100"
+          [placeholder]="translation.weightPlaceholder"
+        ></p-inputNumber>
+      </div>
+    </div>
     <!-- Calendar -->
     <div class="row field mb-3">
       <div class="col-4">
