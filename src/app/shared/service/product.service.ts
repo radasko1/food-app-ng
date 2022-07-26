@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.interface';
 import { shareReplay } from 'rxjs/operators';
@@ -52,6 +52,18 @@ export class ProductService {
 	createProduct(formBody: FormBody): Observable<Product> {
 		return this.http.post<Product>(this.apiUrlPath, formBody);
 	}
+
+  /**
+   * Delete Product from database.
+   * @param id
+   */
+  deleteProduct(id: string | null): Observable<unknown> | null {
+    if (!id) {
+      return null;
+    }
+
+    return this.http.delete<unknown>(this.apiUrlPath + id);
+  }
 
 	/**
 	 * Get collection of product records

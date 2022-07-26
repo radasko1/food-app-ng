@@ -6,6 +6,7 @@
 	<app-header-panel
 		[title]="(products$ | async)?.name || null"
 		[showRecordButton]="true"
+    [showDeleteProductButton]="true"
 		[productId]="productId"
 	></app-header-panel>
 

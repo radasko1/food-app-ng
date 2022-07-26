@@ -1,30 +1,39 @@
 <div *ngIf="title" class="d-flex justify-content-between align-items-center">
-  <h2>{{ title }}</h2>
+	<h2>{{ title }}</h2>
 
-  <div class="button-group">
-    <button
-      [routerLink]="['/product/new-product']"
-      *ngIf="showProductButton"
-      pButton
-      pRipple
-      type="button"
-      icon="pi pi-plus"
-      iconPos="left"
-      class="p-button-sm no-decoration"
-      [label]="translation.addProduct"
-    ></button>
-    <button
-      [routerLink]="['/product/new-record']"
-      [queryParams]="{ productId: productId }"
-      *ngIf="showRecordButton"
-      pButton
-      pRipple
-      type="button"
-      icon="pi pi-plus"
-      iconPos="left"
-      class="p-button-sm no-decoration"
-      [class.ms-2]="showProductButton"
-      [label]="translation.addRecord"
-    ></button>
-  </div>
+	<div class="button-group">
+		<button
+			[routerLink]="['/product/new-product']"
+			*ngIf="showProductButton"
+			pButton
+			pRipple
+			type="button"
+			icon="pi pi-plus"
+			iconPos="left"
+			class="p-button-sm no-decoration"
+			[label]="translation.addProduct"
+		></button>
+		<button
+      *ngIf="showDeleteProductButton"
+			pButton
+			pRipple
+			type="button"
+			icon="pi pi-trash"
+			class="p-button-danger p-button-sm"
+			(click)="deleteProduct(productId)"
+		></button>
+		<button
+			[routerLink]="['/product/new-record']"
+			[queryParams]="{ productId: productId }"
+			*ngIf="showRecordButton"
+			pButton
+			pRipple
+			type="button"
+			icon="pi pi-plus"
+			iconPos="left"
+			class="p-button-sm no-decoration"
+			[class.ms-2]="showProductButton"
+			[label]="translation.addRecord"
+		></button>
+	</div>
 </div>

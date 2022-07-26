@@ -4,6 +4,9 @@
 
 Information about changes made in the application and about version release.
 
+### 0.0.3
+- delete button for product (without confirmation)
+
 ### 0.0.2
 - product record has pipe to display 'weight' in units
 
