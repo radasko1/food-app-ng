@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Product } from '../../../../shared/model/product.interface';
+import { Component } from '@angular/core';
 import translation from './product.translation.json';
 import { ProductService } from '../../../../shared/service/product.service';
 
@@ -12,13 +10,9 @@ import { ProductService } from '../../../../shared/service/product.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit {
-  products$: Observable<Product[]> = new Observable<Product[]>();
+export class ProductComponent  {
+  products$ = this.productService.products$;
   translation = translation;
 
   constructor(private productService: ProductService) {}
-
-  ngOnInit(): void {
-    this.products$ = this.productService.getProducts();
-  }
 }

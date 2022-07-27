@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import translation from './new-product.translation.json';
 import { ProductService } from '../../../../shared/service/product.service';
-import { Product } from '../../../../shared/model/product.interface';
 import { Subscription } from 'rxjs';
 import { MessageService } from 'primeng/api';
 
@@ -14,7 +13,6 @@ import { MessageService } from 'primeng/api';
 })
 export class NewProductComponent {
 	productForm: UntypedFormGroup;
-	productList: Product[] = [];
 	translation = translation;
 	subs: Subscription = new Subscription();
 
@@ -26,12 +24,6 @@ export class NewProductComponent {
 		// set default form values
 		this.productForm = this.formBuilder.group({
 			name: ['', Validators.required],
-		});
-
-		this.productService.getProducts().subscribe((c) => {
-			if (c) {
-				this.productList = c;
-			}
 		});
 	}
 
@@ -58,7 +50,6 @@ export class NewProductComponent {
 				});
 
 				this.productForm.reset();
-				this.productService.clearProducts();
 			});
 	}
 }

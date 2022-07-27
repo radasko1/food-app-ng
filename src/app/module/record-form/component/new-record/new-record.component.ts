@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { ProductService } from '../../../../shared/service/product.service';
-import { Product } from '../../../../shared/model/product.interface';
 import { Market } from '../../../../shared/model/market.interface';
 import { MarketApiService } from '../../../../shared/service/market-api.service';
 import { ProductRecordService } from '../../../../shared/service/product-record.service';
@@ -18,7 +17,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 })
 export class NewRecordComponent implements OnInit, OnDestroy {
   recordForm: UntypedFormGroup;
-  products$ = new Observable<Product[]>();
+  products$ = this.productService.products$;
   markets$ = new Observable<Market[]>();
   routeParams: Params | null = null;
   subs: Subscription = new Subscription();
@@ -44,7 +43,6 @@ export class NewRecordComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.products$ = this.productService.getProducts();
     this.markets$ = this.marketApiService.get();
     this.routeParams = this.route.snapshot.queryParams;
 

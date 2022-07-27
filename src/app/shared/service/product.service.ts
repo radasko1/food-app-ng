@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.interface';
 import { shareReplay } from 'rxjs/operators';
@@ -12,30 +12,25 @@ import { FormBody } from "../../module/record-form/model/form-body.interface";
 })
 export class ProductService {
 	private readonly apiUrlPath = environment.apiUrl + '/api/v1/product/';
-	// cached values
-	private _products$: Observable<Product[]> | null = null;
+	products$ = new BehaviorSubject<Product[]>([]);
 	private _productRecords$: { [key: string]: Observable<ProductRecord[]> } = {};
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {
+    this.getProducts();
+  }
 
 	/**
 	 * Get collection of Product entities.
 	 */
-	getProducts(): Observable<Product[]> {
-		if (!this._products$) {
-			this._products$ = this.http
-				.get<Product[]>(this.apiUrlPath)
-				.pipe(shareReplay(1));
-		}
-		return this._products$;
-	}
+	getProducts(): void {
+    this.http.get<Product[]>(this.apiUrlPath).subscribe((products) => {
+      if (!products) {
+        return;
+      }
 
-  /**
-   * Clear Product cache.
-   */
-  clearProducts() {
-    this._products$ = null;
-  }
+      this.products$.next(products);
+    })
+	}
 
 	/**
 	 * Get Product entity by unique id
