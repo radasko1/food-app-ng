@@ -4,15 +4,18 @@
 	</div>
 
 	<app-header-panel
-		[title]="(products$ | async)?.name || null"
+		[title]="(product$ | async)?.name ?? null"
 		[showRecordButton]="true"
-    [showDeleteProductButton]="true"
+		[showDeleteProductButton]="true"
 		[productId]="productId"
 	></app-header-panel>
 
 	<!-- Products -->
-	<div *ngIf="productRecords$ | async as products" class="product-list">
-		<p-table [value]="products">
+	<div
+		*ngIf="(product$ | async)?.records as productRecords"
+		class="product-list"
+	>
+		<p-table [value]="productRecords">
 			<ng-template pTemplate="header">
 				<tr>
 					<th pSortableColumn="name">

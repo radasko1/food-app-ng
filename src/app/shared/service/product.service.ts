@@ -60,19 +60,6 @@ export class ProductService {
     return this.http.delete<unknown>(this.apiUrlPath + id);
   }
 
-	/**
-	 * Get collection of product records
-	 * @param id
-	 */
-	getProductRecords(id: string): Observable<ProductRecord[]> {
-		if (!this._productRecords$[id]) {
-			this._productRecords$[id] = this.http
-				.get<ProductRecord[]>(this.apiUrlPath + id + '/records')
-				.pipe(shareReplay(1));
-		}
-		return this._productRecords$[id];
-	}
-
   /**
    * Remove cached data to be initiated again.
    * @param id

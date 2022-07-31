@@ -16,8 +16,7 @@ import { ProductRecord } from '../../../../shared/model/product-record.interface
 })
 export class ProductRecordComponent implements OnInit {
   productId = '';
-  products$ = new Observable<Product>();
-  productRecords$ = new Observable<ProductRecord[]>();
+  product$ = new Observable<Product>();
   translation = translation;
 
   constructor(
@@ -34,9 +33,6 @@ export class ProductRecordComponent implements OnInit {
 
     // cache this response from Product list page
     // TODO: cache product collection?
-    // TODO: forkJoin?
-    this.products$ = this.productService.getSingleProduct(this.productId);
-    // TODO: empty table result
-    this.productRecords$ = this.productService.getProductRecords(this.productId);
+    this.product$ = this.productService.getSingleProduct(this.productId);
   }
 }
