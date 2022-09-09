@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import translation from './product-record.translation.json';
 import { Observable } from 'rxjs';
+import translation from './product-record.translation.json';
 import { ProductService } from '../../../../shared/service/product.service';
 import { Product } from '../../../../shared/model/product.interface';
-import { ProductRecord } from '../../../../shared/model/product-record.interface';
 
 /**
  * Detail for Product, where can be found list with records.
@@ -15,9 +14,9 @@ import { ProductRecord } from '../../../../shared/model/product-record.interface
   styleUrls: ['./product-record.component.scss'],
 })
 export class ProductRecordComponent implements OnInit {
+  translation = translation;
   productId = '';
   product$ = new Observable<Product>();
-  translation = translation;
 
   constructor(
     private productService: ProductService,

@@ -11,8 +11,8 @@ import { ProductService } from '../../../../shared/service/product.service';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent  {
-  products$ = this.productService.products$;
   translation = translation;
+  products$ = this.productService.products$;
 
   constructor(private productService: ProductService) {}
 }

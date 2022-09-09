@@ -2,6 +2,7 @@
 	<h2>{{ title }}</h2>
 
 	<div class="button-group">
+    <!-- Add new product -->
 		<button
 			[routerLink]="['/product/new-product']"
 			*ngIf="showProductButton"
@@ -13,15 +14,17 @@
 			class="p-button-sm no-decoration"
 			[label]="translation.addProduct"
 		></button>
+    <!-- Delete product -->
 		<button
       *ngIf="showDeleteProductButton"
 			pButton
 			pRipple
 			type="button"
 			icon="pi pi-trash"
-			class="p-button-danger p-button-sm"
+			class="p-button-outlined p-button-danger p-button-sm"
 			(click)="deleteProduct(productId)"
 		></button>
+    <!-- Add product record -->
 		<button
 			[routerLink]="['/product/new-record']"
 			[queryParams]="{ productId: productId }"

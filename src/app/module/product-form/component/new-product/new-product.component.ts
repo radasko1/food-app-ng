@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+	UntypedFormBuilder,
+	UntypedFormGroup,
+	Validators,
+} from '@angular/forms';
 import translation from './new-product.translation.json';
 import { ProductService } from '../../../../shared/service/product.service';
 import { Subscription } from 'rxjs';

@@ -8,7 +8,6 @@ import { ProductService } from '../../../../shared/service/product.service';
 	styleUrls: ['./header-panel.component.scss'],
 })
 export class ProductHeaderPanelComponent {
-	// set of texts used in template
 	translation = translation;
 
   /**
@@ -23,7 +22,11 @@ export class ProductHeaderPanelComponent {
    * Show delete button in header.
    */
 	@Input() showDeleteProductButton = false;
-	@Input() title: string | null = null; // title value can have delay and may be changed more times
+  /**
+   * Page title.
+   * Title value can have delay and may be changed more times.
+   */
+	@Input() title: string | null = null;
 	/**
 	 * Identifier of product used in new record form.
 	 * Fill product identifier form control in new record form if user navigate from product detail page.
