@@ -31,7 +31,6 @@ export class ProductRecordComponent implements OnInit {
     this.productId = this.route.snapshot.params.id;
 
     // cache this response from Product list page
-    // TODO: cache product collection?
     this.product$ = this.productService.getSingleProduct(this.productId);
   }
 }

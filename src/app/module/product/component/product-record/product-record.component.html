@@ -5,50 +5,52 @@
 
 	<app-header-panel
 		[title]="(product$ | async)?.name ?? null"
-		[showRecordButton]="true"
-		[showDeleteProductButton]="true"
+		[newRecordVisibility]="true"
+		[deleteProductVisibility]="true"
 		[productId]="productId"
 	></app-header-panel>
 
-	<!-- Products -->
-	<div
-		*ngIf="(product$ | async)?.records as productRecords"
-		class="product-list"
-	>
-		<p-table [value]="productRecords">
-			<ng-template pTemplate="header">
-				<tr>
-					<th pSortableColumn="name">
-						{{ translation.tableColumnName }}
-						<p-sortIcon field="name"></p-sortIcon>
-					</th>
-					<th pSortableColumn="price">
-						{{ translation.tableColumnPrice }}
-						<p-sortIcon field="price"></p-sortIcon>
-					</th>
-					<th pSortableColumn="date">
-						{{ translation.tableColumnDate }}
-						<p-sortIcon field="date"></p-sortIcon>
-					</th>
-					<th pSortableColumn="weight">
-						{{ translation.weightColumnDate }}
-						<p-sortIcon field="weight"></p-sortIcon>
-					</th>
-					<th pSortableColumn="market">
-						{{ translation.tableColumnMarket }}
-						<p-sortIcon field="market"></p-sortIcon>
-					</th>
-				</tr>
-			</ng-template>
-			<ng-template pTemplate="body" let-product>
-				<tr>
-					<td>{{ product.name }}</td>
-					<td>{{ product.price }} Kč</td>
-					<td>{{ product.date | date: 'd. M. yyyy' }}</td>
-					<td>{{ product.weight | weight }}</td>
-					<td>{{ product.market.name }}</td>
-				</tr>
-			</ng-template>
-		</p-table>
-	</div>
+  <!-- Products -->
+	<ng-container *ngIf="(product$ | async)?.records?.length">
+		<div
+			*ngIf="(product$ | async)?.records as productRecords"
+			class="product-list"
+		>
+			<p-table [value]="productRecords">
+				<ng-template pTemplate="header">
+					<tr>
+						<th pSortableColumn="name">
+							{{ translation.tableColumnName }}
+							<p-sortIcon field="name"></p-sortIcon>
+						</th>
+						<th pSortableColumn="price">
+							{{ translation.tableColumnPrice }}
+							<p-sortIcon field="price"></p-sortIcon>
+						</th>
+						<th pSortableColumn="date">
+							{{ translation.tableColumnDate }}
+							<p-sortIcon field="date"></p-sortIcon>
+						</th>
+						<th pSortableColumn="weight">
+							{{ translation.weightColumnDate }}
+							<p-sortIcon field="weight"></p-sortIcon>
+						</th>
+						<th pSortableColumn="market">
+							{{ translation.tableColumnMarket }}
+							<p-sortIcon field="market"></p-sortIcon>
+						</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-product>
+					<tr>
+						<td>{{ product.name }}</td>
+						<td>{{ product.price }} Kč</td>
+						<td>{{ product.date | date: 'd. M. yyyy' }}</td>
+						<td>{{ product.weight | weight }}</td>
+						<td>{{ product.market.name }}</td>
+					</tr>
+				</ng-template>
+			</p-table>
+		</div>
+	</ng-container>
 </div>

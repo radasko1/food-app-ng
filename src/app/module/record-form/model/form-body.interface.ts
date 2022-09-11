@@ -3,6 +3,6 @@ export interface FormBody {
   name: string;
   price: number;
   date: Date | string;
-  marketId: number
+  market: number
   productId: number;
 }

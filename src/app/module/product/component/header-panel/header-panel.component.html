@@ -5,7 +5,7 @@
     <!-- Add new product -->
 		<button
 			[routerLink]="['/product/new-product']"
-			*ngIf="showProductButton"
+			*ngIf="newProductVisibility"
 			pButton
 			pRipple
 			type="button"
@@ -16,7 +16,7 @@
 		></button>
     <!-- Delete product -->
 		<button
-      *ngIf="showDeleteProductButton"
+      *ngIf="deleteProductVisibility"
 			pButton
 			pRipple
 			type="button"
@@ -28,14 +28,14 @@
 		<button
 			[routerLink]="['/product/new-record']"
 			[queryParams]="{ productId: productId }"
-			*ngIf="showRecordButton"
+			*ngIf="newRecordVisibility"
 			pButton
 			pRipple
 			type="button"
 			icon="pi pi-plus"
 			iconPos="left"
 			class="p-button-sm no-decoration"
-			[class.ms-2]="showProductButton"
+			[class.ms-2]="newProductVisibility"
 			[label]="translation.addRecord"
 		></button>
 	</div>

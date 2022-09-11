@@ -40,8 +40,8 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 			price: [null, Validators.required],
 			weight: [null],
 			date: [new Date(), Validators.required],
-			productId: ['', Validators.required],
-			marketId: ['', Validators.required],
+			product: ['', Validators.required],
+			market: ['', Validators.required],
 		});
 	}
 
@@ -51,7 +51,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 
 		if (this.routeParams && this.routeParams['productId']) {
 			this.recordForm.patchValue({
-				productId: parseInt(this.routeParams['productId'], 10),
+				product: parseInt(this.routeParams['productId'], 10),
 			});
 		}
 	}

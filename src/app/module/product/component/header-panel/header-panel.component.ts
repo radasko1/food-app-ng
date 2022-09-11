@@ -13,15 +13,15 @@ export class ProductHeaderPanelComponent {
   /**
    * Show button in header, which leads to new product record form.
    */
-	@Input() showRecordButton = false;
+	@Input() newRecordVisibility = false;
   /**
    * Show button in header, which leads to new product form.
    */
-	@Input() showProductButton = false;
+	@Input() newProductVisibility = false;
   /**
    * Show delete button in header.
    */
-	@Input() showDeleteProductButton = false;
+	@Input() deleteProductVisibility = false;
   /**
    * Page title.
    * Title value can have delay and may be changed more times.
