@@ -1,4 +1,5 @@
 {
-  "AutocompletePlaceholder": "Najít produkt...",
-  "EmptyResultText": "Produkt nebyl nalezen."
+  "SearchPlaceholder": "Vyhledávání",
+  "ProductTitle": "Produkty",
+  "CategoryTitle": "Kategorie"
 }

@@ -68,7 +68,7 @@
           id="recordDate"
           formControlName="date"
           dateFormat="dd.mm.yy"
-          [showTime]="false"
+          [showTime]="true"
           [firstDayOfWeek]="1"
           class="w-100"
           styleClass="w-100"
@@ -87,7 +87,7 @@
           [placeholder]="translation.productPlaceholder"
           optionLabel="name"
           optionValue="id"
-          formControlName="product"
+          formControlName="productId"
           style="w-100"
           styleClass="w-100"
         ></p-dropdown>
@@ -105,7 +105,7 @@
           [placeholder]="translation.marketPlaceholder"
           optionLabel="name"
           optionValue="id"
-          formControlName="market"
+          formControlName="marketId"
           style="w-100"
           styleClass="w-100"
         ></p-dropdown>

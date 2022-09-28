@@ -1,7 +1,7 @@
 import { ProductRecord } from "./product-record.interface";
 
 /**
- * Represents Product object
+ * Product database object model.
  */
 export interface Product {
   /**
@@ -13,7 +13,19 @@ export interface Product {
    */
   name: string;
   /**
-   * List of records.
+   * List of Product Record Model
    */
-  records?: ProductRecord[];
+  records: Partial<ProductRecord[]>;
+  /**
+   * Creation date
+   */
+  createdAt?: Date;
+  /**
+   * Update date
+   */
+  updatedAt?: Date;
+  /**
+   * Destroy date
+   */
+  deletedAt: Date | null;
 }

@@ -26,12 +26,4 @@ export class MarketApiService {
 		}
 		return this._markets$;
 	}
-
-	/**
-	 * Get Market entity by unique id
-	 * @param id
-	 */
-	getOne(id: string): Observable<Market> {
-		return this.http.get<Market>(this.apiUrlPath + id);
-	}
 }

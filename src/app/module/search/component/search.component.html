@@ -1,10 +1,39 @@
-<p-autoComplete
-  [(ngModel)]="searchText"
-  [suggestions]="searchResults"
-  [showEmptyMessage]="true"
-  [placeholder]="translation.AutocompletePlaceholder"
-  [emptyMessage]="translation.EmptyResultText"
-  (completeMethod)="search($event)"
-  (onSelect)="select($event)"
-  field="name"
-></p-autoComplete>
+<div class="search">
+	<div class="search__container">
+		<input
+			[formControl]="searchControl"
+			type="text"
+			class="search__control"
+			value=""
+			[placeholder]="translation.SearchPlaceholder"
+		/>
+	</div>
+	<div class="search__result" [class.d-none]="!searchResult">
+		<div
+			*ngIf="searchResult && searchResult.category.length"
+			class="search__category"
+		>
+			<h2 class="search__category-title">
+				{{ translation.CategoryTitle }}
+			</h2>
+			<ul class="search__list">
+				<li *ngFor="let category of searchResult.category">
+					<a>{{ category.name }}</a>
+				</li>
+			</ul>
+		</div>
+		<div
+			*ngIf="searchResult && searchResult.product.length"
+			class="search__product"
+		>
+			<h2 class="search__product-title">
+				{{ translation.ProductTitle }}
+			</h2>
+			<ul class="search__list">
+				<li *ngFor="let product of searchResult.product">
+					<a [href]="'/product/' + product.id">{{ product.name }}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

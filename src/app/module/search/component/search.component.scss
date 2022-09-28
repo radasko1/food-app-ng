@@ -1,0 +1,22 @@
+.search {
+  position: relative;
+}
+
+.search__container {}
+
+.search__control {}
+
+.search__result {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: block;
+  background-color: #fff;
+  padding: 1.5rem 1rem;
+}
+
+.search__list {
+  padding-left: 0;
+  list-style-type: none;
+  margin: 0;
+}

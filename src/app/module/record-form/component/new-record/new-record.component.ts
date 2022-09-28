@@ -6,9 +6,9 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Observable, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { ProductService } from '../../../../shared/service/product.service';
-import { Market } from '../../../../shared/model/market.interface';
 import { MarketApiService } from '../../../../shared/service/market-api.service';
 import { ProductRecordService } from '../../../../shared/service/product-record.service';
 import translation from './new-record.translation.json';
@@ -19,12 +19,12 @@ import translation from './new-record.translation.json';
 	styleUrls: ['./new-record.component.scss'],
 })
 export class NewRecordComponent implements OnInit, OnDestroy {
-	translation = translation;
-	recordForm: UntypedFormGroup;
-	products$ = this.productService.products$;
-	markets$ = new Observable<Market[]>();
-	routeParams: Params | null = null;
-	subs: Subscription = new Subscription();
+	private subs = new Subject<boolean>();
+	private routeParams: Params | null = null;
+	protected translation = translation;
+	protected recordForm: UntypedFormGroup;
+	protected products$ = this.productService.products$;
+	protected markets$ = this.marketApiService.get();
 
 	constructor(
 		private route: ActivatedRoute,
@@ -40,13 +40,12 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 			price: [null, Validators.required],
 			weight: [null],
 			date: [new Date(), Validators.required],
-			product: ['', Validators.required],
-			market: ['', Validators.required],
+			productId: ['', Validators.required],
+			marketId: ['', Validators.required],
 		});
 	}
 
 	ngOnInit() {
-		this.markets$ = this.marketApiService.get();
 		this.routeParams = this.route.snapshot.queryParams;
 
 		if (this.routeParams && this.routeParams['productId']) {
@@ -57,6 +56,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
+		this.subs.next(true);
 		this.subs.unsubscribe();
 	}
 
@@ -66,11 +66,12 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 	onSubmit() {
 		// transform "date" into ISO format
 		this.recordForm.patchValue({
-			date: new Date(this.recordForm.value.date).toISOString(),
+			date: new Date(this.recordForm.value.date).toISOString(), // TODO: check if GMT zone is alright
 		});
 
-		this.subs = this.productApiService
+		this.productApiService
 			.create(this.recordForm.value)
+			.pipe(takeUntil(this.subs))
 			.subscribe((form) => {
 				if (!form) {
 					return;
