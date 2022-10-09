@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="header">
+		<h1 class="header__title">
+			<ng-container
+				*ngIf="category | async; then childTitle; else rootTitle"
+			></ng-container>
+		</h1>
+	</div>
+	<div class="category">
+		<div class="category__list row">
+			<ng-container
+				*ngIf="category | async; then childCategory; else rootCategory"
+			></ng-container>
+		</div>
+	</div>
+</div>
+
+<!-- Root Title -->
+<ng-template #rootTitle>
+	{{ translation.title }}
+</ng-template>
+
+<!-- Category Title -->
+<ng-template #childTitle>
+	{{ (category | async)?.name }}
+</ng-template>
+
+<!-- Root Category -->
+<ng-template #rootCategory>
+	<div
+		*ngFor="let category of categoryList | async"
+		class="col-3 category__wrapper"
+	>
+		<div
+			class="category__item pointer"
+			[routerLink]="['/category', category.id]"
+		>
+			{{ category.name }}
+		</div>
+	</div>
+</ng-template>
+
+<!-- Subcategory -->
+<ng-template #childCategory>
+	<div
+		*ngFor="let subcategory of (category | async)?.subcategory"
+		class="col-3 category__wrapper"
+	>
+		<div
+			class="category__item pointer"
+			[routerLink]="['/category', subcategory.id]"
+		>
+			{{ subcategory.name }}
+		</div>
+	</div>
+</ng-template>

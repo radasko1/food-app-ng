@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotFoundComponent } from './component/not-found.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '**',
     component: NotFoundComponent,
   },
 ];
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class NotFoundRoutingModule {}
+export class ErrorPagesRoutingModule {}

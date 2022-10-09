@@ -1,0 +1,8 @@
+.category__wrapper {
+  margin-bottom: 1rem;
+}
+
+.category__item {
+  background-color: map-get($color-palette, 'light-gray');
+  padding: 1rem;
+}

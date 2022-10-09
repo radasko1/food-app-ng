@@ -11,6 +11,14 @@ export interface Category {
    */
   name: string;
   /**
+   * Parent category ID.
+   */
+  parentId: number;
+  /**
+   * Subcategory list.
+   */
+  subcategory: Category[];
+  /**
    * Creation date.
    */
   createdAt?: Date;

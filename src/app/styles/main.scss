@@ -2,11 +2,14 @@
  * Application Root CSS File
  */
 
-@import "vendor";
+@import 'vendor';
 
-@import "variables";
+@import 'variables';
 
-@import "fonts";
-@import "general";
-@import "navigation";
-@import "utilities";
+@import 'fonts';
+@import 'general';
+@import 'heading';
+@import 'navigation';
+@import 'header';
+@import 'category';
+@import 'utilities';
