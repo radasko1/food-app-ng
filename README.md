@@ -4,15 +4,17 @@
 
 Information about changes made in the application and about version release.
 
+### 0.0.5
+- Added `CategoryModule` with page components for root categories and for subcategories
+- Move `NotFoundModule` to `ErrorPagesModule`
+- Added `CacheService` for API
+
+### 0.0.4
+- Added interface for database models
+- Added `SearchModule`
+
 ### 0.0.3
 - delete button for product (without confirmation)
 
 ### 0.0.2
 - product record has pipe to display 'weight' in units
-
-
-## Problems
-
-- using `[routerLink]="['/category', category.id]"` will not trigger routing path to load component, therefore I wrapped card with link tag
-  - may be caused by missing other router parameters (`replaceLocationChange`, `relativeTo`, ...)
-  - [https://angular.io/api/router/RouteReuseStrategy](https://angular.io/api/router/RouteReuseStrategy)
