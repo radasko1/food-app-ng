@@ -1,18 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, of, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import translation from './product.translation.json';
-import { ProductService } from '../../../../shared/service/product.service';
+import { ProductService } from '../../service/product.service';
+import { Product } from '../../model/product.interface';
 
-/**
- * List of all available products.
- */
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+	selector: 'app-product',
+	templateUrl: './product.component.html',
 })
-export class ProductComponent  {
-  protected translation = translation;
-  protected products$ = this.productService.products$;
+export class ProductComponent implements OnInit, OnDestroy {
+	private subs = new Subject<boolean>();
+	private params = this.route.snapshot.params;
+	protected product$: Observable<Product> = of();
+	protected translation = translation;
 
-  constructor(private productService: ProductService) {}
+	constructor(
+		private route: ActivatedRoute,
+		private productService: ProductService
+	) {}
+
+	ngOnInit() {
+		if (this.params['id']) {
+			this.product$ = this.productService
+				.getOne(this.params['id'])
+				.pipe(takeUntil(this.subs));
+		}
+	}
+
+	ngOnDestroy() {
+		this.subs.next(true);
+		this.subs.unsubscribe();
+	}
 }

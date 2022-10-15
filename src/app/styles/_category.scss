@@ -3,6 +3,6 @@
 }
 
 .category__item {
-  background-color: map-get($color-palette, 'light-gray');
+  background-color: $light-gray;
   padding: 1rem;
 }

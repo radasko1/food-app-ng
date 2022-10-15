@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import translation from './translation.json';
-import { ProductService } from '../../../../shared/service/product.service';
+import { ProductService } from '../../service/product.service';
 
 @Component({
 	selector: 'app-header-panel',
@@ -10,22 +10,18 @@ import { ProductService } from '../../../../shared/service/product.service';
 export class ProductHeaderPanelComponent {
 	translation = translation;
 
-  /**
-   * Show button in header, which leads to new product record form.
-   */
+	/**
+	 * Show button in header, which leads to new product record form.
+	 */
 	@Input() newRecordVisibility = false;
-  /**
-   * Show button in header, which leads to new product form.
-   */
-	@Input() newProductVisibility = false;
-  /**
-   * Show delete button in header.
-   */
+	/**
+	 * Show delete button in header.
+	 */
 	@Input() deleteProductVisibility = false;
-  /**
-   * Page title.
-   * Title value can have delay and may be changed more times.
-   */
+	/**
+	 * Page title.
+	 * Title value can have delay and may be changed more times.
+	 */
 	@Input() title: string | null = null;
 	/**
 	 * Identifier of product used in new record form.
@@ -40,6 +36,6 @@ export class ProductHeaderPanelComponent {
 	 * @param id
 	 */
 	deleteProduct(id: string | null) {
-		this.productService.deleteProduct(id)?.subscribe();
+		this.productService.delete(id)?.subscribe();
 	}
 }

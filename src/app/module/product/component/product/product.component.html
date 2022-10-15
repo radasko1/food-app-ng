@@ -1,10 +1,22 @@
-<div class="container">
-	<div class="page-header"></div>
+<!-- Transform 'product$' observable -->
+<ng-container *ngIf="product$ | async as product">
+	<div class="container">
+		<div class="header">
+			<h1 class="header__title">
+				{{ product.name }}
+			</h1>
+			<p
+				*ngIf="product.category?.name"
+				class="product__category-name font-secondary"
+			>
+				({{ product.category.name }})
+			</p>
+		</div>
 
-	<app-header-panel
-		[title]="translation.title"
-		[newProductVisibility]="true"
-	></app-header-panel>
-
-	<app-product-list [dataSource]="products$"></app-product-list>
-</div>
+		<div class="product">
+			<app-product-record
+				[productRecords]="product.records"
+			></app-product-record>
+		</div>
+	</div>
+</ng-container>

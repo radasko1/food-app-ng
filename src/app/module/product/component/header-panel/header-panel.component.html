@@ -2,18 +2,6 @@
 	<h2>{{ title }}</h2>
 
 	<div class="button-group">
-    <!-- Add new product -->
-		<button
-			[routerLink]="['/product/new-product']"
-			*ngIf="newProductVisibility"
-			pButton
-			pRipple
-			type="button"
-			icon="pi pi-plus"
-			iconPos="left"
-			class="p-button-sm no-decoration"
-			[label]="translation.addProduct"
-		></button>
     <!-- Delete product -->
 		<button
       *ngIf="deleteProductVisibility"
@@ -35,7 +23,6 @@
 			icon="pi pi-plus"
 			iconPos="left"
 			class="p-button-sm no-decoration"
-			[class.ms-2]="newProductVisibility"
 			[label]="translation.addRecord"
 		></button>
 	</div>

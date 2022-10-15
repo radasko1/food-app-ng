@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SearchResult } from '../../../shared/model/search-result.interface';
-import { environment } from '../../../../environments/environment';
-import { SEARCH_API } from '../../../shared/constant/api/search.constant';
+import { API_PATH } from '../../../shared/constant/api-path.constant';
 
 @Injectable()
 export class SearchService {
@@ -13,13 +12,10 @@ export class SearchService {
 	 * Get search results of searched term.
 	 */
 	getSearchResults(searchTerm: string): Observable<SearchResult> {
-		return this.http.get<SearchResult>(
-			environment.apiUrl + SEARCH_API.SEARCH,
-			{
-				params: {
-					filter: searchTerm,
-				},
-			}
-		);
+		return this.http.get<SearchResult>(`${API_PATH}/search`, {
+			params: {
+				filter: searchTerm,
+			},
+		});
 	}
 }

@@ -2,16 +2,14 @@
 	<div class="header">
 		<h1 class="header__title">
 			<ng-container
-				*ngIf="category | async; then childTitle; else rootTitle"
+				*ngIf="category$ | async; then childTitle; else rootTitle"
 			></ng-container>
 		</h1>
 	</div>
 	<div class="category">
-		<div class="category__list row">
-			<ng-container
-				*ngIf="category | async; then childCategory; else rootCategory"
-			></ng-container>
-		</div>
+		<ng-container
+			*ngIf="category$ | async; then childCategory; else rootCategory"
+		></ng-container>
 	</div>
 </div>
 
@@ -22,35 +20,63 @@
 
 <!-- Category Title -->
 <ng-template #childTitle>
-	{{ (category | async)?.name }}
+	{{ (category$ | async)?.name }}
 </ng-template>
 
 <!-- Root Category -->
 <ng-template #rootCategory>
-	<div
-		*ngFor="let category of categoryList | async"
-		class="col-3 category__wrapper"
-	>
+	<div class="category__list row">
 		<div
-			class="category__item pointer"
-			[routerLink]="['/category', category.id]"
+			*ngFor="let category of categoryList$ | async"
+			class="col-3 category__wrapper"
 		>
-			{{ category.name }}
+			<div
+				class="category__item pointer"
+				[routerLink]="['/category', category.id]"
+			>
+				{{ category.name }}
+			</div>
 		</div>
 	</div>
 </ng-template>
 
 <!-- Subcategory -->
 <ng-template #childCategory>
-	<div
-		*ngFor="let subcategory of (category | async)?.subcategory"
-		class="col-3 category__wrapper"
-	>
-		<div
-			class="category__item pointer"
-			[routerLink]="['/category', subcategory.id]"
-		>
-			{{ subcategory.name }}
+	<ng-container *ngIf="category$ | async as category">
+		<!-- Subcategory List -->
+		<h2 *ngIf="category.subcategory.length" class="category__title mb-3">
+			{{ translation.subcategoryTitle }}
+		</h2>
+		<div class="category__list row mb-3">
+			<div
+				*ngFor="let subcategory of category.subcategory"
+				class="col-3 category__wrapper"
+			>
+				<div
+					class="category__item pointer"
+					[routerLink]="['/category', subcategory.id]"
+				>
+					{{ subcategory.name }}
+				</div>
+			</div>
 		</div>
-	</div>
+
+		<!-- Product List -->
+		<h2 *ngIf="category.product.length" class="category__title mb-3">
+			{{ translation.productsTitle }}
+		</h2>
+		<div class="category__list row">
+			<div
+				*ngFor="let product of category.product"
+				class="category__wrapper col-3"
+			>
+				<div
+					class="category__item pointer"
+					[routerLink]="['/product', product.id]"
+				>
+					{{ product.name }}
+				</div>
+			</div>
+		</div>
+	</ng-container>
 </ng-template>

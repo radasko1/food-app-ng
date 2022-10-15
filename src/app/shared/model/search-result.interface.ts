@@ -1,5 +1,5 @@
-import { Category } from './category.interface';
-import { Product } from './product.interface';
+import { Category } from '../../module/category/model/category.interface';
+import { Product } from '../../module/product/model/product.interface';
 
 /**
  * Search API endpoint response.

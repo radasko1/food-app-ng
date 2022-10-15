@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../../../shared/service/api.service';
-import { apiPath } from '../../../shared/constant/api/api-path.constant';
-import { Category } from '../../../shared/model/category.interface';
+import { API_PATH } from '../../../shared/constant/api-path.constant';
+import { Category } from '../model/category.interface';
 import { CacheService } from '../../../shared/service/cache.service';
 
 @Injectable()
 export class CategoryService {
-	private readonly url = apiPath + 'category';
+	private readonly url = `${API_PATH}/category`; // TODO: create constant
 	private readonly cacheKey = 'category';
 	private cache = new CacheService<Category[]>();
 

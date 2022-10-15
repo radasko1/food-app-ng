@@ -2,14 +2,16 @@
  * Application Root CSS File
  */
 
+// Third party libraries
 @import 'vendor';
-
+//
 @import 'variables';
-
+//
 @import 'fonts';
 @import 'general';
 @import 'heading';
 @import 'navigation';
 @import 'header';
 @import 'category';
+@import 'product';
 @import 'utilities';

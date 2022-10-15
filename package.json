@@ -1,20 +1,26 @@
 {
   "name": "food-app-frontend",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Mealer is application to log food prices of each markets at any time.",
-  "keywords": [
-    "mealer",
-    "food app",
-    "food price"
-  ],
+  "author": {
+    "name": "Radim Kolar",
+    "email": "radimkolar22@gmail.com",
+    "url": "https://github.com/radasko1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github:radasko1/food-app-ng"
+  },
+  "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "update-version": "npm version patch --git-tag-version false"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.6",
     "@angular/cdk": "^13.3.4",

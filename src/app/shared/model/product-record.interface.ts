@@ -1,4 +1,4 @@
-import { Product } from "./product.interface";
+import { Product } from "../../module/product/model/product.interface";
 import { Market } from "./market.interface";
 
 export interface ProductRecord {
@@ -27,7 +27,7 @@ export interface ProductRecord {
   /**
    * Part of Product Model
    */
-  product: Partial<Product>;
+  // product: Partial<Product>;
   /**
    * Market Model ID
    */

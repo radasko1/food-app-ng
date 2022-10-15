@@ -8,7 +8,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ProductService } from '../../../../shared/service/product.service';
+import { ProductService } from '../../../product/service/product.service';
 import { MarketApiService } from '../../../../shared/service/market-api.service';
 import { ProductRecordService } from '../../../../shared/service/product-record.service';
 import translation from './new-record.translation.json';
@@ -23,7 +23,7 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 	private routeParams: Params | null = null;
 	protected translation = translation;
 	protected recordForm: UntypedFormGroup;
-	protected products$ = this.productService.products$;
+	protected products$ = this.productService.get();
 	protected markets$ = this.marketApiService.get();
 
 	constructor(
@@ -84,11 +84,6 @@ export class NewRecordComponent implements OnInit, OnDestroy {
 				});
 
 				this.recordForm.reset();
-				if (this.routeParams && this.routeParams['productId']) {
-					this.productService.removeProductRecord(
-						this.routeParams['productId']
-					);
-				}
 			});
 	}
 }
