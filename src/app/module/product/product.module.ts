@@ -1,26 +1,16 @@
 import { NgModule } from '@angular/core';
+import { TableModule } from 'primeng/table';
 import { ProductComponent } from './component/product/product.component';
 import { ProductRecordComponent } from './component/product-record/product-record.component';
-import { ProductRoutingModule } from './product-routing.module';
-import { ProductHeaderPanelComponent } from './component/header-panel/header-panel.component';
 import { WeightPipe } from './pipe/weight.pipe';
 import { ProductService } from './service/product.service';
-import { SharedModule } from '../../shared/module/shared.module';
+import { ProductRoutingModule } from './product-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-	declarations: [
-		ProductComponent,
-		ProductRecordComponent,
-		ProductHeaderPanelComponent,
-		WeightPipe,
-	],
-	exports: [
-		ProductComponent,
-		ProductRecordComponent,
-		ProductHeaderPanelComponent,
-		WeightPipe,
-	],
+	declarations: [ProductComponent, ProductRecordComponent, WeightPipe],
+	exports: [ProductComponent, ProductRecordComponent, WeightPipe],
 	providers: [ProductService],
-	imports: [ProductRoutingModule, SharedModule],
+	imports: [TableModule, ProductRoutingModule, SharedModule],
 })
 export class ProductModule {}

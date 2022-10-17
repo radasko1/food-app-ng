@@ -1,0 +1,117 @@
+<div class="container">
+	<div class="header">
+		<h1 class="header__title">{{ translation.RecordFormTitle }}</h1>
+	</div>
+
+	<div class="mb-3">
+		<form [formGroup]="formGroup" class="form">
+			<div class="row justify-content-center mb-6">
+				<!-- Market -->
+				<div class="col-4">
+					<label for="market-list" class="mb-2">{{
+						translation.MarketLabel
+					}}</label>
+					<p-dropdown
+						id="market-list"
+						[options]="(marketList$ | async) || []"
+						optionLabel="name"
+						optionValue="id"
+						formControlName="marketId"
+						styleClass="w-100"
+					></p-dropdown>
+				</div>
+				<!-- Calendar -->
+				<div class="col-4">
+					<label for="calendar" class="mb-2">
+						{{ translation.DateLabel }}
+					</label>
+					<p-calendar
+						id="calendar"
+						formControlName="date"
+						dateFormat="dd.mm.yy"
+						hourFormat="24"
+						placeholder="Datum"
+						styleClass="w-100"
+						[firstDayOfWeek]="1"
+						[showButtonBar]="true"
+						[showIcon]="true"
+						[showTime]="true"
+					></p-calendar>
+				</div>
+			</div>
+		</form>
+
+		<h2 class="mb-3">{{ translation.ProductListTitle }}</h2>
+		<div
+			*ngFor="let form of productFormGroup; index as i; first as first"
+			class="mb-2"
+		>
+			<form [formGroup]="form">
+				<div class="row">
+					<!-- Drag icon -->
+<!--					<div class="col"></div>-->
+					<!-- Name -->
+					<div class="col-4">
+						<input
+							type="text"
+							pInputText
+							formControlName="name"
+							placeholder="Nazev"
+							class="w-100"
+							[placeholder]="translation.ProductNamePlaceholder"
+						/>
+					</div>
+					<!-- Category -->
+					<div class="col-3">
+						<p-dropdown
+							[options]="(productList$ | async) || []"
+							optionLabel="name"
+							optionValue="id"
+							formControlName="productId"
+							styleClass="w-100"
+							[placeholder]="translation.CategoryPlaceholder"
+						></p-dropdown>
+					</div>
+					<!-- Price -->
+					<div class="col-2">
+						<p-inputNumber
+							formControlName="price"
+							mode="currency"
+							currency="CZK"
+							locale="cs-CZ"
+							styleClass="w-100"
+							[placeholder]="translation.PricePlaceholder"
+						></p-inputNumber>
+					</div>
+					<!-- Weight -->
+					<div class="col-2">
+						<p-inputNumber
+							formControlName="weight"
+							suffix=" g"
+							styleClass="w-100"
+							[placeholder]="translation.WeightPlaceholder"
+						></p-inputNumber>
+					</div>
+					<!-- Remove icon -->
+					<div class="col d-flex align-items-center">
+						<div
+							class="pointer icon--close"
+							(click)="removeFormGroup(i)"
+							*ngIf="!first"
+						>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<button class="button-text" (click)="addFormGroup()">
+			{{ translation.AddRow }}
+		</button>
+	</div>
+
+	<div class="text-center mt-4">
+		<button class="button button-primary" (click)="submit()">
+			{{ translation.AddProducts }}
+		</button>
+	</div>
+</div>

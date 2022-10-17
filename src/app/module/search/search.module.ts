@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SearchService } from './service/search.service';
 import { SearchComponent } from './component/search.component';
-import { SharedModule } from '../../shared/module/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
 	declarations: [SearchComponent],

@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProductRecord } from '../model/product-record.interface';
+import { API_PATH } from '../constant/api-path.constant';
+import { ApiService } from './api.service';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ProductRecordService {
-	private readonly apiUrlPath =
-		environment.apiUrl + '/api/v1/product-record/';
+	private readonly url = `${API_PATH}/product-record`;
 
-	constructor(private http: HttpClient) {}
+	constructor(private api: ApiService) {}
 
 	/**
 	 * Create new Product entity
 	 * @param formBody
 	 */
-	create(formBody: unknown): Observable<ProductRecord> {
-		return this.http.post<ProductRecord>(this.apiUrlPath, formBody);
+	create(
+		formBody: ProductRecord | ProductRecord[]
+	): Observable<ProductRecord | ProductRecord[]> {
+		return this.api.create<ProductRecord>(this.url, formBody);
 	}
 }

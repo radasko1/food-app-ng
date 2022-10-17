@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import translation from './product-record.translation.json';
 import { ProductRecord } from '../../../../shared/model/product-record.interface';
+import { AppRoutes } from '../../../../shared/app.routes';
 
 @Component({
 	selector: 'app-product-record',
@@ -8,6 +9,7 @@ import { ProductRecord } from '../../../../shared/model/product-record.interface
 })
 export class ProductRecordComponent {
 	protected translation = translation;
+	protected appRoutes = AppRoutes;
 
 	/**
 	 * List of product records.

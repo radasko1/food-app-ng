@@ -15,7 +15,7 @@
 
 <!-- Root Title -->
 <ng-template #rootTitle>
-	{{ translation.title }}
+	{{ translation.Title }}
 </ng-template>
 
 <!-- Category Title -->
@@ -44,8 +44,11 @@
 <ng-template #childCategory>
 	<ng-container *ngIf="category$ | async as category">
 		<!-- Subcategory List -->
-		<h2 *ngIf="category.subcategory.length" class="category__title mb-3">
-			{{ translation.subcategoryTitle }}
+		<h2
+      *ngIf="category.subcategory.length"
+      class="category__title mb-3"
+    >
+			{{ translation.SubcategoryTitle }}
 		</h2>
 		<div class="category__list row mb-3">
 			<div
@@ -63,7 +66,7 @@
 
 		<!-- Product List -->
 		<h2 *ngIf="category.product.length" class="category__title mb-3">
-			{{ translation.productsTitle }}
+			{{ translation.ProductsTitle }}
 		</h2>
 		<div class="category__list row">
 			<div

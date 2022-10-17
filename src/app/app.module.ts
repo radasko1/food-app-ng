@@ -6,24 +6,23 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductModule } from './module/product/product.module';
-import { RecordModule } from './module/record-form/record-form.module';
 import { CategoryModule } from './module/category/category.module';
 import { SearchModule } from './module/search/search.module';
+import { FormModule } from './module/form/form.module';
 import { CustomRouteStrategy } from './shared/strategy/custom-route-strategy';
-import { SharedModule } from './shared/module/shared.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
 	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
-		// import in app module to use HttpClient globally
 		HttpClientModule,
 		SharedModule,
 		CategoryModule,
-		RecordModule,
 		ProductModule,
 		SearchModule,
+		FormModule,
 		AppRoutingModule,
 	],
 	providers: [

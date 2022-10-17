@@ -1,28 +1,39 @@
-<h2 class="product-list__title mb-4">
-  {{ translation.recordList }}
-</h2>
+<div class="product-list__panel d-flex justify-content-between mb-2">
+	<h2 class="product-list__title">
+		{{ translation.RecordList }}
+	</h2>
+	<div class="product-list__action-wrapper">
+		<button
+			type="button"
+			class="button button-primary button-icon-plus"
+			[routerLink]="['/', appRoutes.FORM, appRoutes.FORM_PRODUCT_RECORD]"
+		>
+			{{ translation.NewRecord }}
+		</button>
+	</div>
+</div>
 <div class="product-list">
 	<p-table [value]="productRecords">
 		<ng-template pTemplate="header">
 			<tr>
 				<th pSortableColumn="name">
-					{{ translation.tableColumnName }}
+					{{ translation.TableColumnName }}
 					<p-sortIcon field="name"></p-sortIcon>
 				</th>
 				<th pSortableColumn="price">
-					{{ translation.tableColumnPrice }}
+					{{ translation.TableColumnPrice }}
 					<p-sortIcon field="price"></p-sortIcon>
 				</th>
 				<th pSortableColumn="date">
-					{{ translation.tableColumnDate }}
+					{{ translation.TableColumnDate }}
 					<p-sortIcon field="date"></p-sortIcon>
 				</th>
 				<th pSortableColumn="weight">
-					{{ translation.weightColumnDate }}
+					{{ translation.WeightColumnDate }}
 					<p-sortIcon field="weight"></p-sortIcon>
 				</th>
 				<th pSortableColumn="market">
-					{{ translation.tableColumnMarket }}
+					{{ translation.TableColumnMarket }}
 					<p-sortIcon field="market"></p-sortIcon>
 				</th>
 			</tr>

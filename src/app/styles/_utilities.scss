@@ -2,6 +2,8 @@
  * Utility Styles
  */
 
+// TODO: change sizing equally by 8px
+
 .page-header {
   display: block;
   margin: 1rem 0;
@@ -18,5 +20,9 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.mb-6 {
+  margin-bottom: 4rem;
 }
 
