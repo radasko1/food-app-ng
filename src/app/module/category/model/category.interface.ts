@@ -1,4 +1,4 @@
-import { Product } from '../../product/model/product.interface';
+import { ProductRecord } from "../../../shared/model/product-record.interface";
 
 /**
  * Category database object model.
@@ -23,7 +23,7 @@ export interface Category {
 	/**
 	 * Product list.
 	 */
-	product: Product[];
+	productRecords: ProductRecord[];
 	/**
 	 * Creation date.
 	 */

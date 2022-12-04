@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import translation from './category.translation.json';
 import { CategoryService } from '../service/category.service';
 import { Category } from '../model/category.interface';

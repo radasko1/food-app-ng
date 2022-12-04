@@ -8,9 +8,9 @@
 			<div class="row justify-content-center mb-6">
 				<!-- Market -->
 				<div class="col-4">
-					<label for="market-list" class="mb-2">{{
-						translation.MarketLabel
-					}}</label>
+					<label for="market-list" class="mb-2">
+            {{ translation.MarketLabel }}
+          </label>
 					<p-dropdown
 						id="market-list"
 						[options]="(marketList$ | async) || []"
@@ -64,10 +64,10 @@
 					<!-- Category -->
 					<div class="col-3">
 						<p-dropdown
-							[options]="(productList$ | async) || []"
+							[options]="(categoryList$ | async) || []"
 							optionLabel="name"
 							optionValue="id"
-							formControlName="productId"
+							formControlName="categoryId"
 							styleClass="w-100"
 							[placeholder]="translation.CategoryPlaceholder"
 						></p-dropdown>

@@ -11,6 +11,11 @@
 			*ngIf="category$ | async; then childCategory; else rootCategory"
 		></ng-container>
 	</div>
+	<div class="product-records">
+		<ng-container
+			*ngIf="(category$ | async)?.productRecords; then productRecords"
+		></ng-container>
+	</div>
 </div>
 
 <!-- Root Title -->
@@ -44,10 +49,7 @@
 <ng-template #childCategory>
 	<ng-container *ngIf="category$ | async as category">
 		<!-- Subcategory List -->
-		<h2
-      *ngIf="category.subcategory.length"
-      class="category__title mb-3"
-    >
+		<h2 *ngIf="category.subcategory.length" class="category__title mb-3">
 			{{ translation.SubcategoryTitle }}
 		</h2>
 		<div class="category__list row mb-3">
@@ -63,23 +65,14 @@
 				</div>
 			</div>
 		</div>
+	</ng-container>
+</ng-template>
 
-		<!-- Product List -->
-		<h2 *ngIf="category.product.length" class="category__title mb-3">
-			{{ translation.ProductsTitle }}
-		</h2>
-		<div class="category__list row">
-			<div
-				*ngFor="let product of category.product"
-				class="category__wrapper col-3"
-			>
-				<div
-					class="category__item pointer"
-					[routerLink]="['/product', product.id]"
-				>
-					{{ product.name }}
-				</div>
-			</div>
+<!-- Product Records -->
+<ng-template #productRecords>
+	<ng-container *ngIf="(category$ | async)?.productRecords as records">
+		<div class="product-records-list">
+			<app-product-record [productRecords]="records"></app-product-record>
 		</div>
 	</ng-container>
 </ng-template>
