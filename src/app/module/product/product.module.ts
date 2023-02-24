@@ -8,8 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
 	declarations: [ProductRecordComponent, WeightPipe],
-	exports: [ProductRecordComponent, WeightPipe],
-	providers: [],
 	imports: [TableModule, RouterModule, SharedModule],
+	exports: [ProductRecordComponent, WeightPipe],
 })
 export class ProductModule {}

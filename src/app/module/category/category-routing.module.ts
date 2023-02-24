@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryComponent } from './component/category.component';
+
+import { CategoryComponent } from './component/category/category.component';
+import { CategoryDetailComponent } from "./component/category-detail/category-detail.component";
 
 /**
  * Without root redirect routing navigation doesn't work properly.
@@ -15,10 +17,10 @@ const routes: Routes = [
 		path: 'category',
 		component: CategoryComponent,
 	},
-	{
-		path: ':id',
-		component: CategoryComponent,
-	},
+  {
+    path: ':id/detail',
+    component: CategoryDetailComponent
+  }
 ];
 
 @NgModule({

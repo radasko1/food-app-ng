@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Category } from '../model/category.interface';
 import { ApiService } from '../../../shared/service/api.service';
 import { API_PATH } from '../../../shared/constant/api-path.constant';
-import { Category } from '../model/category.interface';
 import { CacheService } from '../../../shared/service/cache.service';
 
 @Injectable()
@@ -17,7 +18,7 @@ export class CategoryService {
 	/**
 	 * Get all categories.
 	 */
-	get(): Observable<Category[]> {
+	getAll(): Observable<Category[]> {
 		const cacheValue = this.cache.getValue(this.cacheKey);
 
 		if (cacheValue) {
@@ -35,9 +36,10 @@ export class CategoryService {
   /**
    * Get all root categories.
    */
+  /*
   getRoot(): Observable<Category[]> {
     return this.api.get<Category[]>(`${this.url}/root`);
-  }
+  }*/
 
 	/**
 	 * Get category by ID.

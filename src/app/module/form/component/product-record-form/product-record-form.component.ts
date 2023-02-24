@@ -19,7 +19,7 @@ import { ProductRecord } from '../../../../shared/model/product-record.interface
 export class ProductRecordFormComponent {
 	protected translation = translation;
 	protected marketList$ = this.marketService.get();
-	protected categoryList$ = this.categoryService.get();
+	protected categoryList$ = this.categoryService.getAll();
 	protected formGroup: FormGroup;
 	protected productFormGroup: FormGroup[];
 
@@ -31,6 +31,7 @@ export class ProductRecordFormComponent {
 	) {
 		this.formGroup = this.fb.group({
 			// TODO: GMT date problem
+      // TODO: czech month names
 			date: new FormControl<Date | null>(null, Validators.required),
 			marketId: new FormControl<number | null>(null, Validators.required),
 		});
@@ -103,6 +104,7 @@ export class ProductRecordFormComponent {
 		this.productRecordService.create(productRecordData).subscribe();
 
 		this.formGroup.reset();
-		this.productFormGroup.forEach((fg) => fg.reset());
+		this.productFormGroup = [];
+    this.addFormGroup();
 	}
 }
