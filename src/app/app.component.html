@@ -6,10 +6,25 @@
 	</div>
 	<nav class="navigation__nav">
 		<ul class="navigation__list">
+			<!--   Category Page   -->
 			<li class="navigation__item">
 				<a [routerLink]="['/category']" class="navigation__link">
 					Kategorie
 				</a>
+			</li>
+			<!--   Login   -->
+			<li
+				class="navigation__item"
+				*ngIf="!(authService.isAuthenticated$ | async)"
+			>
+				<a class="navigation__link" (click)="login()">Login</a>
+			</li>
+			<!--   Logout   -->
+			<li
+				class="navigation__item"
+				*ngIf="authService.isAuthenticated$ | async"
+			>
+				<a class="navigation__link" (click)="logout()">Logout</a>
 			</li>
 		</ul>
 	</nav>

@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouteReuseStrategy } from '@angular/router';
+import { AuthModule } from '@auth0/auth0-angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,7 @@ import { SearchModule } from './module/search/search.module';
 import { FormModule } from './module/form/form.module';
 import { CustomRouteStrategy } from './shared/strategy/custom-route-strategy';
 import { SharedModule } from './shared/shared.module';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -25,6 +27,11 @@ import { SharedModule } from './shared/shared.module';
 		SearchModule,
 		FormModule,
 		AppRoutingModule,
+		AuthModule.forRoot({
+			domain: environment.auth0.domain,
+			clientId: environment.auth0.clientId,
+			redirectUri: window.location.origin,
+		}),
 	],
 	providers: [
 		{

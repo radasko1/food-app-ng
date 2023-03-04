@@ -3,8 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'http://127.0.0.1:3000',
+	production: false,
+	apiUrl: 'http://127.0.0.1:5000',
+  // Auth0 configuration
+	auth0: {
+		domain: 'dev-jympx99y.eu.auth0.com',
+		clientId: 'Iwlo3RH2UkIAD5f798I8wN6Rr29YnIBT',
+	},
 };
 
 /*
