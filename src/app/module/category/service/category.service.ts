@@ -33,10 +33,10 @@ export class CategoryService {
 		);
 	}
 
-  /**
-   * Get all root categories.
-   */
-  /*
+	/**
+	 * Get all root categories.
+	 */
+	/*
   getRoot(): Observable<Category[]> {
     return this.api.get<Category[]>(`${this.url}/root`);
   }*/

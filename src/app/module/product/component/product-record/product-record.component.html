@@ -17,10 +17,6 @@
 	<p-table [value]="productRecords">
 		<ng-template pTemplate="header">
 			<tr>
-				<th pSortableColumn="name">
-					{{ translation.TableColumnName }}
-					<p-sortIcon field="name"></p-sortIcon>
-				</th>
 				<th pSortableColumn="price">
 					{{ translation.TableColumnPrice }}
 					<p-sortIcon field="price"></p-sortIcon>
@@ -37,15 +33,18 @@
 					{{ translation.TableColumnMarket }}
 					<p-sortIcon field="market"></p-sortIcon>
 				</th>
+				<th pSortableColumn="ratio">
+					Ratio <p-sortIcon field="ratio"></p-sortIcon>
+				</th>
 			</tr>
 		</ng-template>
 		<ng-template pTemplate="body" let-product>
 			<tr>
-				<td>{{ product.name | titlecase }}</td>
 				<td>{{ product.price }} Kč</td>
 				<td>{{ product.date | date: 'd. M. yyyy' }}</td>
 				<td>{{ product.weight | weight }}</td>
 				<td>{{ product.market.name }}</td>
+				<td>{{ product.ratio | number }}</td>
 			</tr>
 		</ng-template>
 	</p-table>

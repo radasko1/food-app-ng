@@ -1,9 +1,9 @@
 {
-  "RecordList": "Seznam záznamů",
-  "TableColumnName": "Název",
-  "TableColumnPrice": "Cena",
-  "TableColumnDate": "Datum",
-  "WeightColumnDate": "Hmotnost",
-  "TableColumnMarket": "Obchod",
-  "NewRecord": "Nový záznam"
+	"RecordList": "Seznam záznamů",
+	"TableColumnName": "Název",
+	"TableColumnPrice": "Cena",
+	"TableColumnDate": "Datum",
+	"WeightColumnDate": "Hmotnost",
+	"TableColumnMarket": "Obchod",
+	"NewRecord": "Nový záznam"
 }

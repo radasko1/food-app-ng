@@ -4,61 +4,13 @@
 	</div>
 
 	<div class="mb-3">
-		<form [formGroup]="formGroup" class="form">
-			<div class="row justify-content-center mb-6">
-				<!-- Market -->
-				<div class="col-4">
-					<label for="market-list" class="mb-2">
-            {{ translation.MarketLabel }}
-          </label>
-					<p-dropdown
-						id="market-list"
-						[options]="(marketList$ | async) || []"
-						optionLabel="name"
-						optionValue="id"
-						formControlName="marketId"
-						styleClass="w-100"
-					></p-dropdown>
-				</div>
-				<!-- Calendar -->
-				<div class="col-4">
-					<label for="calendar" class="mb-2">
-						{{ translation.DateLabel }}
-					</label>
-					<p-calendar
-						id="calendar"
-						formControlName="date"
-						dateFormat="dd.mm.yy"
-						hourFormat="24"
-						placeholder="Datum"
-						styleClass="w-100"
-						[firstDayOfWeek]="1"
-						[showButtonBar]="true"
-						[showIcon]="true"
-						[showTime]="false"
-					></p-calendar>
-				</div>
-			</div>
-		</form>
-
-		<h2 class="mb-3">{{ translation.ProductListTitle }}</h2>
+		<h2 class="mb-3">{{ translation.RecordList }}</h2>
 		<div
 			*ngFor="let form of productFormGroup; index as i; first as first"
 			class="mb-2"
 		>
 			<form [formGroup]="form">
 				<div class="row">
-					<!-- Name -->
-					<div class="col-4">
-						<input
-							type="text"
-							pInputText
-							formControlName="name"
-							placeholder="Nazev"
-							class="w-100"
-							[placeholder]="translation.ProductNamePlaceholder"
-						/>
-					</div>
 					<!-- Category -->
 					<div class="col-3">
 						<p-dropdown
@@ -68,6 +20,32 @@
 							formControlName="categoryId"
 							styleClass="w-100"
 							[placeholder]="translation.CategoryPlaceholder"
+						></p-dropdown>
+					</div>
+					<!-- Calendar -->
+					<div class="col-2">
+						<p-calendar
+							id="calendar"
+							formControlName="date"
+							dateFormat="dd.mm.yy"
+							hourFormat="24"
+							placeholder="Datum"
+							styleClass="w-100"
+							[firstDayOfWeek]="1"
+							[showButtonBar]="true"
+							[showIcon]="true"
+							[showTime]="false"
+						></p-calendar>
+					</div>
+					<!-- Market -->
+					<div class="col-3">
+						<p-dropdown
+							id="market-list"
+							[options]="(marketList$ | async) || []"
+							optionLabel="name"
+							optionValue="id"
+							formControlName="marketId"
+							styleClass="w-100"
 						></p-dropdown>
 					</div>
 					<!-- Price -->
@@ -96,8 +74,7 @@
 							class="pointer icon--close"
 							(click)="removeFormGroup(i)"
 							*ngIf="!first"
-						>
-						</div>
+						></div>
 					</div>
 				</div>
 			</form>

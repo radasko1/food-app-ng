@@ -1,4 +1,4 @@
-import { ProductRecord } from "../../../shared/model/product-record.interface";
+import { ProductRecord } from '../../../shared/model/product-record.interface';
 
 /**
  * Category database object model.

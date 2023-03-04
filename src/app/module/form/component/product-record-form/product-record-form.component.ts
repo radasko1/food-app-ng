@@ -20,7 +20,6 @@ export class ProductRecordFormComponent {
 	protected translation = translation;
 	protected marketList$ = this.marketService.get();
 	protected categoryList$ = this.categoryService.getAll();
-	protected formGroup: FormGroup;
 	protected productFormGroup: FormGroup[];
 
 	constructor(
@@ -29,15 +28,8 @@ export class ProductRecordFormComponent {
 		private categoryService: CategoryService,
 		private productRecordService: ProductRecordService
 	) {
-		this.formGroup = this.fb.group({
-			// TODO: GMT date problem
-      // TODO: czech month names
-			date: new FormControl<Date | null>(null, Validators.required),
-			marketId: new FormControl<number | null>(null, Validators.required),
-		});
 		this.productFormGroup = [
 			this.fb.group({
-				name: new FormControl<string>('', Validators.required),
 				categoryId: new FormControl<number | null>(
 					null,
 					Validators.required
@@ -60,7 +52,6 @@ export class ProductRecordFormComponent {
 	protected addFormGroup(): void {
 		this.productFormGroup.push(
 			this.fb.group({
-				name: new FormControl<string>('', Validators.required),
 				categoryId: new FormControl<number | null>(
 					null,
 					Validators.required
@@ -85,26 +76,24 @@ export class ProductRecordFormComponent {
 	}
 
 	protected submit(): void {
-		if (this.formGroup.status !== 'VALID') {
-			return;
-		}
-
 		const productRecordData: ProductRecord[] = [];
 
 		// assign 'date' and 'market' control to all product forms
 		for (let i = 0; i < this.productFormGroup.length; i++) {
 			const form = this.productFormGroup[i];
-
 			productRecordData.push({
 				...form.value,
-				...this.formGroup.value,
 			});
 		}
 
-		this.productRecordService.create(productRecordData).subscribe();
-
-		this.formGroup.reset();
-		this.productFormGroup = [];
-    this.addFormGroup();
+		this.productRecordService.create(productRecordData).subscribe({
+			next: (createdList) => {
+				this.productFormGroup = [];
+				this.addFormGroup();
+			},
+			error: (err) => {
+				console.log('Nepodarilo se pridat produkty.');
+			},
+		});
 	}
 }

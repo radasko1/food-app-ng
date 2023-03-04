@@ -31,11 +31,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 				)
 			)
 			.subscribe((searchRes) => {
-        if (searchRes.category.length || searchRes.product.length) {
-				  this.searchResult = searchRes;
-        } else {
-          this.searchResult = null;
-        }
+				if (searchRes.category.length || searchRes.product.length) {
+					this.searchResult = searchRes;
+				} else {
+					this.searchResult = null;
+				}
 			});
 	}
 

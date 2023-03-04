@@ -1,16 +1,18 @@
 <!-- Navigation -->
 <div class="navigation">
-  <div class="navigation__logo">Mealer</div>
-  <div class="navigation__search-box">
-    <app-search></app-search>
-  </div>
-  <nav class="navigation__nav">
-    <ul class="navigation__list">
-      <li class="navigation__item">
-        <a [routerLink]="['/category']" class="navigation__link">Kategorie</a>
-      </li>
-    </ul>
-  </nav>
+	<div class="navigation__logo">Mealer</div>
+	<div class="navigation__search-box">
+		<app-search></app-search>
+	</div>
+	<nav class="navigation__nav">
+		<ul class="navigation__list">
+			<li class="navigation__item">
+				<a [routerLink]="['/category']" class="navigation__link">
+					Kategorie
+				</a>
+			</li>
+		</ul>
+	</nav>
 </div>
 <!-- Page Content -->
 <router-outlet></router-outlet>

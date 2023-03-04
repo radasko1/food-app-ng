@@ -22,9 +22,9 @@ export class CacheService<T> {
 			return undefined;
 		}
 
-    if (!this.cacheData[key]) {
-      return undefined;
-    }
+		if (!this.cacheData[key]) {
+			return undefined;
+		}
 
 		// cache is expired
 		if (moment().unix() > this.cacheData[key].expiration) {
@@ -65,10 +65,10 @@ export class CacheService<T> {
 		return !!this.getValue(key);
 	}
 
-  /**
-   * Clear cache data.
-   */
-  clear() : void {
-    this.cacheData = {};
-  }
+	/**
+	 * Clear cache data.
+	 */
+	clear(): void {
+		this.cacheData = {};
+	}
 }

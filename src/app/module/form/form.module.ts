@@ -16,7 +16,7 @@ import { MarketService } from '../../shared/service/market.service';
 		CalendarModule,
 		DropdownModule,
 		InputTextModule,
-    InputNumberModule,
+		InputNumberModule,
 		FormRoutingModule,
 		SharedModule,
 		ReactiveFormsModule,

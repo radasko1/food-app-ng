@@ -1,5 +1,5 @@
 import { ProductRecord } from '../../../shared/model/product-record.interface';
-import { Category } from "../../category/model/category.interface";
+import { Category } from '../../category/model/category.interface';
 
 /**
  * Product database object model.
@@ -13,10 +13,10 @@ export interface Product {
 	 *  Name of the product
 	 */
 	name: string;
-  /**
-   * Category information
-   */
-  category: Partial<Category>;
+	/**
+	 * Category information
+	 */
+	category: Partial<Category>;
 	/**
 	 * List of Product Record Model
 	 */
