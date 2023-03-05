@@ -1,6 +1,6 @@
 {
   "name": "food-app-frontend",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Mealer is application to log food prices of each markets at any time.",
   "author": {
     "name": "Radim Kolar",

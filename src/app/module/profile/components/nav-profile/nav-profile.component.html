@@ -1,0 +1,30 @@
+<div
+	*ngIf="authService.user$ | async as user"
+	class="user-profile"
+	(click)="showUserOverlay = true"
+	cdkOverlayOrigin
+	#trigger="cdkOverlayOrigin"
+>
+	<div class="user-profile__avatar">
+		<img
+			[src]="user.picture"
+			[alt]="user.email"
+			class="user-profile__picture"
+		/>
+	</div>
+
+	<ng-template
+		cdkConnectedOverlay
+		[cdkConnectedOverlayOrigin]="trigger"
+		[cdkConnectedOverlayOpen]="showUserOverlay"
+	>
+		<div class="user-profile-panel">
+			<div>
+				<strong>{{ user.nickname }}</strong>
+			</div>
+			<div>{{ user.email }}</div>
+			<hr />
+			<div (click)="logout()">Odhlásit se</div>
+		</div>
+	</ng-template>
+</div>

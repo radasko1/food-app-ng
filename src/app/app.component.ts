@@ -7,14 +7,4 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AppComponent {
 	constructor(protected authService: AuthService) {}
-
-	/** Login user in application */
-	protected login() {
-		this.authService.loginWithRedirect();
-	}
-
-  /** Logout user */
-	protected logout() {
-		this.authService.logout();
-	}
 }

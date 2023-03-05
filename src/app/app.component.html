@@ -1,6 +1,7 @@
 <!-- Navigation -->
 <div class="navigation">
 	<div class="navigation__logo">Mealer</div>
+	<!--   Search -->
 	<div class="navigation__search-box">
 		<app-search></app-search>
 	</div>
@@ -12,19 +13,19 @@
 					Kategorie
 				</a>
 			</li>
+			<!--   Profile   -->
+			<app-nav-profile></app-nav-profile>
 			<!--   Login   -->
 			<li
 				class="navigation__item"
 				*ngIf="!(authService.isAuthenticated$ | async)"
 			>
-				<a class="navigation__link" (click)="login()">Login</a>
-			</li>
-			<!--   Logout   -->
-			<li
-				class="navigation__item"
-				*ngIf="authService.isAuthenticated$ | async"
-			>
-				<a class="navigation__link" (click)="logout()">Logout</a>
+				<a
+					class="navigation__link"
+					(click)="authService.loginWithRedirect()"
+				>
+					Login
+				</a>
 			</li>
 		</ul>
 	</nav>

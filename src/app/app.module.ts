@@ -11,6 +11,7 @@ import { ProductModule } from './module/product/product.module';
 import { CategoryModule } from './module/category/category.module';
 import { SearchModule } from './module/search/search.module';
 import { FormModule } from './module/form/form.module';
+import { ProfileModule } from './module/profile/profile.module';
 import { CustomRouteStrategy } from './shared/strategy/custom-route-strategy';
 import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
 		ProductModule,
 		SearchModule,
 		FormModule,
+		ProfileModule,
 		AppRoutingModule,
 		AuthModule.forRoot({
 			domain: environment.auth0.domain,

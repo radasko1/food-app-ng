@@ -1,0 +1,24 @@
+@import './src/app/styles/variables.scss';
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.user-profile-panel {
+  cursor: pointer;
+  background-color: $white;
+  padding: 1rem;
+}
+
+
+.user-profile__avatar {
+	margin-right: 0.5rem;
+}
+
+.user-profile__picture {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+}

@@ -1,0 +1,14 @@
+.search__control {
+	padding: 1rem;
+	border: 1px solid $gray-500;
+	border-radius: 12px;
+	outline: none;
+
+	&:focus,
+	&:focus-visible,
+	&:focus-within,
+	&:active {
+		border-color: $black;
+		outline: none;
+	}
+}
