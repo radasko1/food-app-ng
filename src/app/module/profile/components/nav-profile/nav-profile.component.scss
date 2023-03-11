@@ -7,11 +7,11 @@
 }
 
 .user-profile-panel {
-  cursor: pointer;
   background-color: $white;
   padding: 1rem;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-light;
 }
-
 
 .user-profile__avatar {
 	margin-right: 0.5rem;

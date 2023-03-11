@@ -1,51 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { Category } from '../model/category.interface';
 import { ApiService } from '../../../shared/service/api.service';
-import { API_PATH } from '../../../shared/constant/api-path.constant';
-import { CacheService } from '../../../shared/service/cache.service';
+import { FOOD_APP_API_URL } from '../../../shared/constant/api-path.constant';
+import { CacheData } from '../../../shared/decorators/cache-http-request.decorator';
+
+/** URL for Category HTTP requests */
+const URL = `${FOOD_APP_API_URL}/category`;
 
 @Injectable()
 export class CategoryService {
-	private readonly url = `${API_PATH}/category`; // TODO: create constant
-	private readonly cacheKey = 'category';
-	private cache = new CacheService<Category[]>();
-
-	constructor(private api: ApiService) {}
+	constructor(private apiService: ApiService) {}
 
 	/**
 	 * Get all categories.
 	 */
+	@CacheData('category')
 	getAll(): Observable<Category[]> {
-		const cacheValue = this.cache.getValue(this.cacheKey);
-
-		if (cacheValue) {
-			return of(cacheValue);
-		}
-
-		return this.api.get<Category[]>(this.url).pipe(
-			map((categoryList) => {
-				this.cache.setValue(this.cacheKey, categoryList);
-				return categoryList;
-			})
-		);
+		return this.apiService.get<Category[]>(URL);
 	}
 
 	/**
-	 * Get all root categories.
-	 */
-	/*
-  getRoot(): Observable<Category[]> {
-    return this.api.get<Category[]>(`${this.url}/root`);
-  }*/
-
-	/**
 	 * Get category by ID.
-	 * @param id
+	 * @param id Category identifier
 	 */
+  @CacheData('category')
 	getOne(id: string): Observable<Category> {
-		return this.api.getOne<Category>(`${this.url}/${id}`);
+		return this.apiService.getOne<Category>(`${URL}/${id}`);
 	}
 }

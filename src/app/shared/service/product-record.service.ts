@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductRecord } from '../model/product-record.interface';
-import { API_PATH } from '../constant/api-path.constant';
+import { FOOD_APP_API_URL } from '../constant/api-path.constant';
 import { ApiService } from './api.service';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ProductRecordService {
-	private readonly url = `${API_PATH}/product-record`;
+	private readonly url = `${FOOD_APP_API_URL}/product-record`;
 
 	constructor(private api: ApiService) {}
 

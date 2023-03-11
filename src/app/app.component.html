@@ -13,8 +13,6 @@
 					Kategorie
 				</a>
 			</li>
-			<!--   Profile   -->
-			<app-nav-profile></app-nav-profile>
 			<!--   Login   -->
 			<li
 				class="navigation__item"
@@ -24,11 +22,13 @@
 					class="navigation__link"
 					(click)="authService.loginWithRedirect()"
 				>
-					Login
+					Přihlášení
 				</a>
 			</li>
 		</ul>
 	</nav>
+  <!--   Profile   -->
+  <app-nav-profile></app-nav-profile>
 </div>
 <!-- Page Content -->
 <router-outlet></router-outlet>

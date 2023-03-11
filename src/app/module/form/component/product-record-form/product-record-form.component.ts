@@ -18,7 +18,7 @@ import { ProductRecord } from '../../../../shared/model/product-record.interface
 })
 export class ProductRecordFormComponent {
 	protected translation = translation;
-	protected marketList$ = this.marketService.get();
+	protected marketList$ = this.marketService.getAll();
 	protected categoryList$ = this.categoryService.getAll();
 	protected productFormGroup: FormGroup[];
 

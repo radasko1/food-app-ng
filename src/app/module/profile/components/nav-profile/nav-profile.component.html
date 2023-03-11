@@ -17,6 +17,7 @@
 		cdkConnectedOverlay
 		[cdkConnectedOverlayOrigin]="trigger"
 		[cdkConnectedOverlayOpen]="showUserOverlay"
+    (overlayOutsideClick)="showUserOverlay = false"
 	>
 		<div class="user-profile-panel">
 			<div>
@@ -24,7 +25,7 @@
 			</div>
 			<div>{{ user.email }}</div>
 			<hr />
-			<div (click)="logout()">Odhlásit se</div>
+			<a href="#" (click)="logout()">Odhlásit se</a>
 		</div>
 	</ng-template>
 </div>

@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	apiUrl: 'http://127.0.0.1:5000',
+	foodAppUrl: 'http://127.0.0.1:5000',
   // Auth0 configuration
 	auth0: {
 		domain: 'dev-jympx99y.eu.auth0.com',
