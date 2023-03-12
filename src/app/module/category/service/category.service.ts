@@ -5,6 +5,7 @@ import { Category } from '../model/category.interface';
 import { ApiService } from '../../../shared/service/api.service';
 import { FOOD_APP_API_URL } from '../../../shared/constant/api-path.constant';
 import { CacheData } from '../../../shared/decorators/cache-http-request.decorator';
+import { CategoryForm } from "../../../shared/model/category-form.interface";
 
 /** URL for Category HTTP requests */
 const URL = `${FOOD_APP_API_URL}/category`;
@@ -29,4 +30,12 @@ export class CategoryService {
 	getOne(id: string): Observable<Category> {
 		return this.apiService.getOne<Category>(`${URL}/${id}`);
 	}
+
+  /**
+   * Create new category
+   * @param category
+   */
+  create(category: CategoryForm): Observable<any> {
+    return this.apiService.create(URL, category);
+  }
 }

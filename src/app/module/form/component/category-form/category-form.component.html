@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="header">
+		<h1 class="header__title">{{ translation.CategoryFormTitle }}</h1>
+	</div>
+
+	<div class="mb-3">
+		<form [formGroup]="form">
+			<div class="row">
+				<!-- Category -->
+				<div class="col-3">
+					<input type="text" pInputText
+						formControlName="name"
+						styleClass="w-100"
+						[placeholder]="translation.CategoryPlaceholder"
+					>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="text-center mt-4">
+		<button class="button button-primary" (click)="submit()">
+			{{ translation.ButtonText }}
+		</button>
+	</div>
+</div>

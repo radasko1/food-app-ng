@@ -7,11 +7,12 @@ import { InputNumberModule } from 'primeng/inputnumber';
 
 import { FormRoutingModule } from './form-routing.module';
 import { ProductRecordFormComponent } from './component/product-record-form/product-record-form.component';
+import { CategoryFormComponent } from './component/category-form/category-form.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MarketService } from '../../shared/service/market.service';
 
 @NgModule({
-	declarations: [ProductRecordFormComponent],
+	declarations: [ProductRecordFormComponent, CategoryFormComponent],
 	imports: [
 		CalendarModule,
 		DropdownModule,

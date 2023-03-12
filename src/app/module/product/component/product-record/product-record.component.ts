@@ -19,7 +19,7 @@ export class ProductRecordComponent implements OnInit {
 
 	ngOnInit() {
 		this.productRecords.forEach((prodRecord) => {
-			prodRecord.ratio = prodRecord.weight / prodRecord.price;
+			prodRecord.ratio = (prodRecord.weight ?? 0) / prodRecord.price;
 		});
 	}
 }

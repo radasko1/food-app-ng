@@ -10,4 +10,5 @@ export class AppRoutes {
 	/** Form Module */
 	public static readonly FORM = 'form';
 	public static readonly FORM_PRODUCT_RECORD = 'product-record';
+	public static readonly FORM_CATEGORY = 'category/new';
 }

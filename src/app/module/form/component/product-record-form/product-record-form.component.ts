@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
-import {
-	FormBuilder,
-	FormControl,
-	FormGroup,
-	Validators,
-} from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 
 import translation from './product-record-form.translation.json';
 import { CategoryService } from '../../../category/service/category.service';
 import { MarketService } from '../../../../shared/service/market.service';
 import { ProductRecordService } from '../../../../shared/service/product-record.service';
-import { ProductRecord } from '../../../../shared/model/product-record.interface';
+import { ProductRecordForm } from '../../../../shared/model/product-record-form.interface';
 
 @Component({
 	selector: 'product-record-form',
@@ -20,53 +15,34 @@ export class ProductRecordFormComponent {
 	protected translation = translation;
 	protected marketList$ = this.marketService.getAll();
 	protected categoryList$ = this.categoryService.getAll();
-	protected productFormGroup: FormGroup[];
+	protected productFormGroup = [
+		this.fb.group({
+			id: this.fb.control<number>(0, Validators.required),
+			price: this.fb.control<number>(0, Validators.required),
+			weight: this.fb.control<number | null>(null, Validators.required),
+			date: this.fb.control<Date>(new Date(), Validators.required),
+			marketId: this.fb.control<number>(-1, Validators.required),
+		}),
+	];
 
 	constructor(
-		private fb: FormBuilder,
+		private fb: NonNullableFormBuilder,
 		private marketService: MarketService,
 		private categoryService: CategoryService,
 		private productRecordService: ProductRecordService
-	) {
-		this.productFormGroup = [
-			this.fb.group({
-				categoryId: new FormControl<number | null>(
-					null,
-					Validators.required
-				),
-				price: new FormControl<number | null>(
-					null,
-					Validators.required
-				),
-				weight: new FormControl<number | null>(
-					null,
-					Validators.required
-				),
-				// additional fields for valid form
-				date: new FormControl<Date>(new Date(), Validators.required),
-				marketId: new FormControl<number>(-1, Validators.required),
-			}),
-		];
-	}
+	) {}
 
 	protected addFormGroup(): void {
 		this.productFormGroup.push(
 			this.fb.group({
-				categoryId: new FormControl<number | null>(
+				id: this.fb.control<number>(0, Validators.required),
+				price: this.fb.control<number>(0, Validators.required),
+				weight: this.fb.control<number | null>(
 					null,
 					Validators.required
 				),
-				price: new FormControl<number | null>(
-					null,
-					Validators.required
-				),
-				weight: new FormControl<number | null>(
-					null,
-					Validators.required
-				),
-				// additional fields for valid form
-				date: new FormControl<Date>(new Date(), Validators.required),
-				marketId: new FormControl<number>(0, Validators.required),
+				date: this.fb.control<Date>(new Date(), Validators.required),
+				marketId: this.fb.control<number>(0, Validators.required),
 			})
 		);
 	}
@@ -76,18 +52,22 @@ export class ProductRecordFormComponent {
 	}
 
 	protected submit(): void {
-		const productRecordData: ProductRecord[] = [];
+		const productRecordData: ProductRecordForm[] = [];
 
 		// assign 'date' and 'market' control to all product forms
 		for (let i = 0; i < this.productFormGroup.length; i++) {
-			const form = this.productFormGroup[i];
-			productRecordData.push({
-				...form.value,
-			});
+			const formControlValue = this.productFormGroup[i].value;
+			productRecordData.push(<ProductRecordForm>{
+        id: formControlValue.id,
+        price: formControlValue.price,
+        weight: formControlValue.weight,
+        date: formControlValue.date,
+        marketId: formControlValue.marketId,
+      });
 		}
 
 		this.productRecordService.create(productRecordData).subscribe({
-			next: (createdList) => {
+			next: () => {
 				this.productFormGroup = [];
 				this.addFormGroup();
 			},

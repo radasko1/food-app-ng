@@ -1,20 +1,7 @@
 import { Market } from './market.interface';
+import { ProductRecordForm } from "./product-record-form.interface";
 
-export interface ProductRecord {
-	/**
-	 * Food record uniquer identifier.
-	 * There is no place to use this value yet.
-	 */
-	id: number;
-	/** Price of product */
-	price: number;
-	/**
-	 * Date when was product bought.
-	 * Needs to be in ISO format pass into server via POST request.
-	 */
-	date: Date;
-  /** Product weight */
-  weight: number;
+export interface ProductRecord extends ProductRecordForm {
 	/** Product Model ID */
 	productId: number;
 	/** Market Model ID */
@@ -26,7 +13,7 @@ export interface ProductRecord {
 	/** Update date */
 	updatedAt?: Date;
   /** Destroy date */
-	deletedAt: Date | null;
+	deletedAt?: Date | null;
   /** Product ratio in table */
   ratio?: number;
 }

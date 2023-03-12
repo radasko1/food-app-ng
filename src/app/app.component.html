@@ -13,6 +13,14 @@
 					Kategorie
 				</a>
 			</li>
+			<li class="navigation__item">
+				<a
+					[routerLink]="'/' + AppRoutes.FORM + '/' + AppRoutes.FORM_CATEGORY"
+					class="navigation__link"
+        >
+          Přidat kategorii
+        </a>
+			</li>
 			<!--   Login   -->
 			<li
 				class="navigation__item"
@@ -27,8 +35,8 @@
 			</li>
 		</ul>
 	</nav>
-  <!--   Profile   -->
-  <app-nav-profile></app-nav-profile>
+	<!--   Profile   -->
+	<app-nav-profile></app-nav-profile>
 </div>
 <!-- Page Content -->
 <router-outlet></router-outlet>
