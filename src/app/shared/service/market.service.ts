@@ -6,17 +6,17 @@ import { FOOD_APP_API_URL } from '../constant/api-path.constant';
 import { ApiService } from './api.service';
 import { CacheData } from '../decorators/cache-http-request.decorator';
 
+const URL = `${FOOD_APP_API_URL}/market`;
+
 @Injectable()
 export class MarketService {
-	private readonly url = `${FOOD_APP_API_URL}/market`;
-
-	constructor(private api: ApiService) {}
+	constructor(private apiService: ApiService) {}
 
 	/**
 	 * Get all markets.
 	 */
-  @CacheData('markets')
+	@CacheData('markets')
 	getAll(): Observable<Market[]> {
-		return this.api.get<Market[]>(this.url);
+		return this.apiService.get<Market[]>(URL);
 	}
 }

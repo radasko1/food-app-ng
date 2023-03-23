@@ -8,11 +8,17 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormRoutingModule } from './form-routing.module';
 import { ProductRecordFormComponent } from './component/product-record-form/product-record-form.component';
 import { CategoryFormComponent } from './component/category-form/category-form.component';
+import { ProductFormComponent } from './component/product-form/product-form.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MarketService } from '../../shared/service/market.service';
+import { ProductService } from '../../shared/service/product.service';
 
 @NgModule({
-	declarations: [ProductRecordFormComponent, CategoryFormComponent],
+	declarations: [
+		ProductRecordFormComponent,
+		CategoryFormComponent,
+		ProductFormComponent,
+	],
 	imports: [
 		CalendarModule,
 		DropdownModule,
@@ -23,6 +29,6 @@ import { MarketService } from '../../shared/service/market.service';
 		ReactiveFormsModule,
 	],
 	exports: [ProductRecordFormComponent],
-	providers: [MarketService],
+	providers: [MarketService, ProductService],
 })
 export class FormModule {}

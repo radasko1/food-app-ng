@@ -1,9 +1,6 @@
 export interface ProductRecordForm {
-  /**
-   * Food record uniquer identifier.
-   * There is no place to use this value yet.
-   */
-  id: number;
+  /** Product identifier */
+  productId: number;
   /** Price of product */
   price: number;
   /**

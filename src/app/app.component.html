@@ -9,6 +9,7 @@
 		<ul class="navigation__list">
 			<!--   Category Page   -->
 			<li class="navigation__item">
+        <!-- @route CATEGORY -->
 				<a [routerLink]="['/category']" class="navigation__link">
 					Kategorie
 				</a>
@@ -21,6 +22,14 @@
           Přidat kategorii
         </a>
 			</li>
+      <li class="navigation__item">
+        <a
+          [routerLink]="'/' + AppRoutes.FORM + '/' + AppRoutes.FORM_PRODUCT"
+          class="navigation__link"
+        >
+          Přidat produkt
+        </a>
+      </li>
 			<!--   Login   -->
 			<li
 				class="navigation__item"

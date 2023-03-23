@@ -17,4 +17,8 @@ export class ApiService {
 	create<T>(url: string, body: unknown): Observable<T> {
 		return this.http.post<T>(url, body);
 	}
+
+	update<T>(url: string, body: unknown): Observable<T> {
+		return this.http.patch<T>(url, body);
+	}
 }

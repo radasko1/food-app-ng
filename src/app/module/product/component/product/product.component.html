@@ -1,0 +1,63 @@
+<ng-container *ngIf="product$ | async as product">
+	<div class="container">
+		<div class="header">
+			<h1 class="header__title">
+				{{ product.name }}
+			</h1>
+		</div>
+
+		<!--  Add record  -->
+		<div>
+			<button
+				class="button button-primary"
+				(click)="showFormDialog = true"
+			>
+				{{ locale.AddRecordButton }}
+			</button>
+		</div>
+
+		<!--  No records  -->
+		<ng-template [ngIf]="!product.productRecordsRel.length">
+			(Empty)
+		</ng-template>
+
+    <!--  Product Records Table  -->
+    <ng-template [ngIf]="product.productRecordsRel.length">
+      <p-table [value]="product.productRecordsRel">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Price</th>
+            <th>Weight</th>
+            <th>Date</th>
+            <th>Market</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-productRecord>
+          <tr>
+            <td>{{ productRecord.price }}</td>
+            <td>{{ productRecord.weight | weight }}</td>
+            <td>{{ productRecord.date | date:'d. M. YYYY' }}</td>
+            <td>{{ productRecord.marketRel.name }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </ng-template>
+	</div>
+
+	<!-- Form dialog -->
+	<p-dialog
+		[header]="locale.DialogHeader"
+		[(visible)]="showFormDialog"
+		[modal]="true"
+		[resizable]="false"
+		[style]="{ maxWidth: '20rem' }"
+	>
+		<ng-container *ngTemplateOutlet="productRecordForm"></ng-container>
+	</p-dialog>
+
+	<!-- Product Record Form -->
+  <!-- TODO: better solution? -->
+	<ng-template #productRecordForm>
+		<product-record-form [productId]="product.id"></product-record-form>
+	</ng-template>
+</ng-container>

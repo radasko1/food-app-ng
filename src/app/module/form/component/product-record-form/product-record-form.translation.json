@@ -1,12 +1,9 @@
 {
-	"RecordFormTitle": "Nový záznam",
 	"MarketLabel": "Obchod",
 	"DateLabel": "Datum",
 	"RecordList": "Seznam záznamů",
 	"ProductNamePlaceholder": "Název produktu",
-	"CategoryPlaceholder": "Kategorie",
 	"PricePlaceholder": "Cena za kus/kg",
 	"WeightPlaceholder": "Hmotnost/Objem",
-	"AddRow": "+ Přidat nový řádek",
 	"AddProducts": "Přidat produkty"
 }

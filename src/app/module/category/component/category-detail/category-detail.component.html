@@ -8,9 +8,14 @@
 		<div class="category">
 			<div class="category__list row">
 				<div class="product-records-list">
-					<app-product-record
-						[productRecords]="category.productRecords"
-					></app-product-record>
+          <!-- @route PRODUCT_DETAIL -->
+					<p
+						class="pointer"
+						*ngFor="let product of category.productsRel"
+						[routerLink]="['/product', product.id, 'detail']"
+					>
+						{{ product.name }}
+					</p>
 				</div>
 			</div>
 		</div>

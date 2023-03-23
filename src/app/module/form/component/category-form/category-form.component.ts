@@ -7,7 +7,6 @@ import { CategoryService } from '../../../category/service/category.service';
 @Component({
 	selector: 'app-category-form',
 	templateUrl: './category-form.component.html',
-	styleUrls: ['./category-form.component.css'],
 })
 export class CategoryFormComponent {
 	protected translation = translation;

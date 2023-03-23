@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProductRecordFormComponent } from './component/product-record-form/product-record-form.component';
 import { CategoryFormComponent } from './component/category-form/category-form.component';
+import { ProductFormComponent } from './component/product-form/product-form.component';
 import { AppRoutes } from '../../shared/app.routes';
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
 	{
 		path: AppRoutes.FORM_CATEGORY,
 		component: CategoryFormComponent,
+	},
+	{
+		path: AppRoutes.FORM_PRODUCT,
+		component: ProductFormComponent,
 	},
 ];
 

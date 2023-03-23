@@ -7,12 +7,15 @@
 		<form [formGroup]="form">
 			<div class="row">
 				<!-- Category -->
-				<div class="col-3">
-					<input type="text" pInputText
+				<div class="col-10">
+					<input
+						type="text"
+						pInputText
+						class="w-100"
 						formControlName="name"
 						styleClass="w-100"
 						[placeholder]="translation.CategoryPlaceholder"
-					>
+					/>
 				</div>
 			</div>
 		</form>
