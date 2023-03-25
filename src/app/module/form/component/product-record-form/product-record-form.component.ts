@@ -12,8 +12,6 @@ import { ProductRecordForm } from '../../../../shared/model/product-record-form.
 	templateUrl: './product-record-form.component.html',
 })
 export class ProductRecordFormComponent {
-	@Input() productId: number = -1;
-
 	protected translation = translation;
 	protected marketList$ = this.marketService.getAll();
 	protected productFormGroup = this.fb.group({
@@ -21,7 +19,10 @@ export class ProductRecordFormComponent {
 		weight: this.fb.control<number | null>(null, Validators.required),
 		date: this.fb.control<Date>(new Date(), Validators.required),
 		marketId: this.fb.control<number>(-1, Validators.required),
+		description: this.fb.control<string | null>(null),
 	});
+
+  @Input() productId: number = -1;
 
 	constructor(
 		private fb: NonNullableFormBuilder,
@@ -37,6 +38,7 @@ export class ProductRecordFormComponent {
 			weight: this.productFormGroup.controls.weight.value,
 			date: this.productFormGroup.controls.date.value,
 			marketId: this.productFormGroup.controls.marketId.value,
+			description: this.productFormGroup.controls.description.value,
 		};
 
 		this.productRecordService.create(productRecordData).subscribe({

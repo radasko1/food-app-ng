@@ -1,55 +1,64 @@
-<div class="mb-3">
-	<form [formGroup]="productFormGroup">
-		<div class="row">
-			<!-- Calendar -->
-			<div class="col-12">
-				<p-calendar
-					id="calendar"
-					formControlName="date"
-					dateFormat="dd.mm.yy"
-					hourFormat="24"
-					placeholder="Datum"
-					styleClass="w-100"
-					[firstDayOfWeek]="1"
-					[showButtonBar]="true"
-					[showIcon]="true"
-					[showTime]="false"
-				></p-calendar>
-			</div>
-			<!-- Market -->
-			<div class="col-12">
-				<p-dropdown
-					id="market-list"
-					[options]="(marketList$ | async) || []"
-					optionLabel="name"
-					optionValue="id"
-					formControlName="marketId"
-					styleClass="w-100"
-				></p-dropdown>
-			</div>
-			<!-- Price -->
-			<div class="col-12">
-				<p-inputNumber
-					formControlName="price"
-					mode="currency"
-					currency="CZK"
-					locale="cs-CZ"
-					styleClass="w-100"
-					[placeholder]="translation.PricePlaceholder"
-				></p-inputNumber>
-			</div>
-			<!-- Weight -->
-			<div class="col-12">
-				<p-inputNumber
-					formControlName="weight"
-					suffix=" g"
-					styleClass="w-100"
-					[placeholder]="translation.WeightPlaceholder"
-				></p-inputNumber>
-			</div>
+<form [formGroup]="productFormGroup">
+	<div class="row">
+		<!-- Calendar -->
+		<div class="flex flex-column">
+			<p-calendar
+				id="calendar"
+				formControlName="date"
+				dateFormat="dd.mm.yy"
+				hourFormat="24"
+				placeholder="Datum"
+				styleClass="w-100"
+				[firstDayOfWeek]="1"
+				[showButtonBar]="true"
+				[showIcon]="true"
+				[showTime]="false"
+			></p-calendar>
 		</div>
-	</form>
-</div>
+		<!-- Market -->
+		<div class="flex flex-column">
+			<p-dropdown
+				id="market-list"
+				[options]="(marketList$ | async) || []"
+				optionLabel="name"
+				optionValue="id"
+				formControlName="marketId"
+				styleClass="w-100"
+			></p-dropdown>
+		</div>
+		<!-- Price -->
+		<div class="flex flex-column">
+			<p-inputNumber
+				formControlName="price"
+				mode="currency"
+				currency="CZK"
+				locale="cs-CZ"
+				styleClass="w-100"
+				[placeholder]="translation.PricePlaceholder"
+			></p-inputNumber>
+		</div>
+		<!-- Weight -->
+		<div class="flex flex-column">
+			<p-inputNumber
+				formControlName="weight"
+				suffix=" g"
+				styleClass="w-100"
+				[placeholder]="translation.WeightPlaceholder"
+			></p-inputNumber>
+		</div>
+		<!-- Description -->
+		<div class="flex flex-column">
+			<label htmlFor="description" class="mb-2">Poznámka</label>
+			<textarea
+				id="description"
+				rows="5"
+				pInputTextarea
+				formControlName="description"
+        class="w-100"
+			></textarea>
+		</div>
+	</div>
+</form>
 
 <div class="text-center mt-4">
 	<button class="button button-primary" (click)="submit()">

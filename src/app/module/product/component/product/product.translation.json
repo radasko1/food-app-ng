@@ -1,4 +1,9 @@
 {
   "AddRecordButton": "Přidat",
-  "DialogHeader": "Přidat záznam"
+  "DialogHeader": "Přidat záznam",
+  "WeightColumn": "Hmotnost",
+  "PriceColumn": "Cena",
+  "DateColumn": "Datum",
+  "MarketColumn": "Obchod",
+  "DescriptionColumn": "Poznámka"
 }

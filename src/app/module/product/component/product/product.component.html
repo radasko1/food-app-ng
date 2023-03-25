@@ -26,10 +26,11 @@
       <p-table [value]="product.productRecordsRel">
         <ng-template pTemplate="header">
           <tr>
-            <th>Price</th>
-            <th>Weight</th>
-            <th>Date</th>
-            <th>Market</th>
+            <th>{{ locale.PriceColumn }}</th>
+            <th>{{ locale.WeightColumn }}</th>
+            <th>{{ locale.DateColumn }}</th>
+            <th>{{ locale.MarketColumn }}</th>
+            <th>{{ locale.DescriptionColumn }}</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-productRecord>
@@ -38,6 +39,7 @@
             <td>{{ productRecord.weight | weight }}</td>
             <td>{{ productRecord.date | date:'d. M. YYYY' }}</td>
             <td>{{ productRecord.marketRel.name }}</td>
+            <td>{{ productRecord.description }}</td>
           </tr>
         </ng-template>
       </p-table>

@@ -12,6 +12,7 @@ import { ProductFormComponent } from './component/product-form/product-form.comp
 import { SharedModule } from '../../shared/shared.module';
 import { MarketService } from '../../shared/service/market.service';
 import { ProductService } from '../../shared/service/product.service';
+import { InputTextareaModule } from "primeng/inputtextarea";
 
 @NgModule({
 	declarations: [
@@ -19,15 +20,16 @@ import { ProductService } from '../../shared/service/product.service';
 		CategoryFormComponent,
 		ProductFormComponent,
 	],
-	imports: [
-		CalendarModule,
-		DropdownModule,
-		InputTextModule,
-		InputNumberModule,
-		FormRoutingModule,
-		SharedModule,
-		ReactiveFormsModule,
-	],
+    imports: [
+        CalendarModule,
+        DropdownModule,
+        InputTextModule,
+        InputNumberModule,
+        FormRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+        InputTextareaModule,
+    ],
 	exports: [ProductRecordFormComponent],
 	providers: [MarketService, ProductService],
 })
