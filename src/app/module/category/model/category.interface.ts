@@ -14,16 +14,4 @@ export interface Category {
 	subcategory: Category[];
 	/** Product list */
 	productsRel: Product[];
-	/**
-	 * Creation date.
-	 */
-	createdAt?: Date;
-	/**
-	 * Update date.
-	 */
-	updatedAt?: Date;
-	/**
-	 * Destroy date.
-	 */
-	deletedAt: Date | null;
 }

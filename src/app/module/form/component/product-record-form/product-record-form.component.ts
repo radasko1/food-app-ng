@@ -31,7 +31,6 @@ export class ProductRecordFormComponent {
 	) {}
 
 	protected submit(): void {
-		console.log(this.productId);
 		const productRecordData: ProductRecordForm = {
 			productId: this.productId,
 			price: this.productFormGroup.controls.price.value,

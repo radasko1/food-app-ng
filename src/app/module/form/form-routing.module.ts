@@ -7,14 +7,17 @@ import { ProductFormComponent } from './component/product-form/product-form.comp
 import { AppRoutes } from '../../shared/app.routes';
 
 const routes: Routes = [
+  // @route FORM_PRODUCT_RECORD
 	{
 		path: AppRoutes.FORM_PRODUCT_RECORD,
 		component: ProductRecordFormComponent,
 	},
+  // @route FORM_CATEGORY
 	{
 		path: AppRoutes.FORM_CATEGORY,
 		component: CategoryFormComponent,
 	},
+  // @route FORM_PRODUCT
 	{
 		path: AppRoutes.FORM_PRODUCT,
 		component: ProductFormComponent,

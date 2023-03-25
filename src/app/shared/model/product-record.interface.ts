@@ -8,12 +8,6 @@ export interface ProductRecord extends ProductRecordForm {
 	marketId: number;
 	/** Part of Market Model */
 	market: Partial<Market>;
-	/** Creation date */
-	createdAt?: Date;
-	/** Update date */
-	updatedAt?: Date;
-  /** Destroy date */
-	deletedAt?: Date | null;
   /** Product ratio in table */
   ratio?: number;
 }

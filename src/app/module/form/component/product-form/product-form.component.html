@@ -1,27 +1,40 @@
 <div class="container">
-  <div class="header">
-    <h1 class="header__title">{{ translation.ProductFormTitle }}</h1>
-  </div>
+	<div class="header">
+		<h1 class="header__title">{{ translation.ProductFormTitle }}</h1>
+	</div>
 
-  <div class="mb-3">
-    <form [formGroup]="form">
-      <div class="row">
-        <div class="col-10">
-          <input
-            type="text"
-            pInputText
-            class="w-100"
-            formControlName="name"
-            styleClass="w-100"
-          />
-        </div>
-      </div>
-    </form>
-  </div>
+	<form [formGroup]="form">
+		<div class="row">
+			<!-- Category -->
+			<div class="flex flex-column mb-4">
+				<label htmlFor="category" class="mb-2">{{ translation.Category }}</label>
+				<p-dropdown
+					id="category"
+					[options]="(category$ | async) || []"
+					optionLabel="name"
+					optionValue="id"
+					formControlName="category"
+					styleClass="w-100"
+				></p-dropdown>
+			</div>
+			<!-- Product -->
+			<div class="flex flex-column mb-4">
+				<label htmlFor="product" class="mb-2">{{ translation.ProductName }}</label>
+				<input
+					id="product"
+					type="text"
+					pInputText
+					class="w-100"
+					formControlName="name"
+					styleClass="w-100"
+				/>
+			</div>
+		</div>
+	</form>
 
-  <div class="text-center mt-4">
-    <button class="button button-primary" (click)="submit()">
-      {{ translationGeneral.Create }}
-    </button>
-  </div>
+	<div class="text-center">
+		<button class="button button-primary" (click)="submit()">
+			{{ translationGeneral.Create }}
+		</button>
+	</div>
 </div>

@@ -1,10 +1,6 @@
 export interface Market {
-	/**
-	 * Market uniquer identifier.
-	 */
+	/** Market uniquer identifier */
 	id: number;
-	/**
-	 * Market name
-	 */
+	/** Market name */
 	name: string;
 }
